@@ -8,6 +8,7 @@ import Sonoro from "./components/Sonoro";
 import Visual from "./components/Visual";
 import Escrito from "./components/Escrito";
 import QuienSoy from "./components/QuienSoy";
+import LanguageButton from "./components/LanguageButton";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -58,6 +59,7 @@ function App() {
           />
         ))}
       </Routes>
+      <LanguageButton />
     </>
   );
 }
