@@ -14,3 +14,59 @@ export function useSections() {
     queryFn: sanityUtils.getSections,
   });
 }
+
+export function useQuienSoy() {
+  return useQuery({
+    queryKey: ["quienSoy"],
+    queryFn: sanityUtils.getQuienSoy,
+  });
+}
+
+export function useReleases() {
+  return useQuery({
+    queryKey: ["releases"],
+    queryFn: sanityUtils.getReleases,
+  });
+}
+
+export function useTiposDeReleases() {
+  return useQuery({
+    queryKey: ["tiposDeReleases"],
+    queryFn: sanityUtils.getTiposDeReleases,
+  });
+}
+
+export function useLives() {
+  return useQuery({
+    queryKey: ["lives"],
+    queryFn: sanityUtils.getLives,
+  });
+}
+
+export function useExpos() {
+  return useQuery({
+    queryKey: ["expos"],
+    queryFn: sanityUtils.getExposiciones,
+  });
+}
+
+export function useInvestigacion() {
+  return useQuery({
+    queryKey: ["investigacion"],
+    queryFn: sanityUtils.getInvestigacion,
+  });
+}
+
+export function useArticulos() {
+  return useQuery({
+    queryKey: ["articulos"],
+    queryFn: sanityUtils.getArticulo,
+  });
+}
+
+export function useBlogPosts() {
+  return useQuery({
+    queryKey: ["blogPosts"],
+    queryFn: sanityUtils.getBlogPosts,
+  });
+}
