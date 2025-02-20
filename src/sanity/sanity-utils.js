@@ -15,8 +15,10 @@ export async function getSections() {
             slug,
             titulo,
             descripcion,
+            bio,
             texto,
-            _type
+            _type,
+            links
         }`,
   );
 }
