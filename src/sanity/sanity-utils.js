@@ -14,7 +14,8 @@ export async function getSections() {
             _id,
             slug,
             titulo,
-            text,
+            descripcion,
+            texto,
             _type
         }`,
   );
