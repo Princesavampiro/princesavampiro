@@ -1,6 +1,6 @@
 import { Routes, Route, NavLink } from "react-router";
 import { motion } from "motion/react";
-import { useSections } from "./hooks/useData";
+import { useConfig, useSections } from "./hooks/useData";
 import Menu from "./components/Menu";
 import Home from "./components/Home";
 import Visceral from "./components/Visceral";
@@ -11,6 +11,11 @@ import QuienSoy from "./components/QuienSoy";
 
 function App() {
   const { data, isLoading, error } = useSections();
+  const {
+    data: configData,
+    isLoading: isConfigLoading,
+    error: configError,
+  } = useConfig();
 
   const selectSection = (section) => {
     switch (section._type) {
@@ -29,16 +34,15 @@ function App() {
     }
   };
 
-  if (isLoading) return <div>Cargando...</div>;
-  if (error) return <div>Hubo un error al cargar la data</div>;
+  if (isLoading || isConfigLoading) return <div>Cargando...</div>;
+  if (error || configError) return <div>Hubo un error :( </div>;
 
+  console.log(configData);
   return (
     <>
       <motion.div drag className="animate-pulse cursor-grab">
         <h1>
-          <NavLink to="/">
-            ☆*: .｡. o(≧▽≦)o .｡.:*☆pr1nc3s4-v4mp1r0(*/ω＼*)
-          </NavLink>
+          <NavLink to="/">{configData[0]?.tituloDelSitio}</NavLink>
         </h1>
       </motion.div>
 
