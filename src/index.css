@@ -1,7 +1,32 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Crozette";
+  src: url("/fonts/Crozette-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Cygre";
+  src: url("/fonts/Cygre-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Nightingale";
+  src: url("/fonts/DTNightingale-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Goudy";
+  src: url("/fonts/GoudyStM-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Nudles";
+  src: url("/fonts/Nudles-Regular.woff") format("woff");
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Cygre", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -20,4 +45,10 @@
     color: #000;
     background-color: #fff;
   }
+}
+
+.almendra {
+  font-family: "Almendra Display", serif;
+  font-weight: 400;
+  font-style: normal;
 }
