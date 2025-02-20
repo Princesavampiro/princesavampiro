@@ -1,7 +1,9 @@
 import { NavLink } from "react-router";
+import useLanguage from "../hooks/useLanguage";
 
 export default function Menu({ sections }) {
   const sectionOrder = ["visceral", "sonoro", "visual", "escrito", "quienSoy"];
+  const { language } = useLanguage();
 
   if (!sections) return null;
 
@@ -16,7 +18,7 @@ export default function Menu({ sections }) {
           })
           .map((section) => (
             <NavLink key={section._id} to={section.slug.current}>
-              {section.titulo.es || section.titulo}
+              {section.titulo[language] || section.titulo}
             </NavLink>
           ))}
       </ul>
