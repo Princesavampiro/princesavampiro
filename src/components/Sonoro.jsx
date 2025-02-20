@@ -1,6 +1,7 @@
 import { useSections } from "../hooks/useData";
 import { PortableText } from "@portabletext/react";
 import useLanguage from "../hooks/useLanguage";
+import SectionTitle from "./SectionTitle";
 
 export default function Sonoro() {
   const { data, isLoading, error } = useSections();
@@ -13,9 +14,9 @@ export default function Sonoro() {
 
   return (
     <section>
-      <h1 className="text-xl">
-        {sonoroData.titulo[language] || sonoroData.titulo.es}
-      </h1>
+      <SectionTitle
+        title={sonoroData.titulo[language] || sonoroData.titulo.es}
+      />
       {sonoroData.descripcion && (
         <PortableText
           value={sonoroData.descripcion[language] || sonoroData.descripcion.es}
