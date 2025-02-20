@@ -1,14 +1,20 @@
-import { useSections } from "../hooks/useData";
+import { useExpos, useSections } from "../hooks/useData";
 import { PortableText } from "@portabletext/react";
 import useLanguage from "../hooks/useLanguage";
 import SectionTitle from "./SectionTitle";
 
 export default function Visual() {
   const { data, isLoading, error } = useSections();
+  const {
+    data: expos,
+    isLoading: isExposLoading,
+    error: exposError,
+  } = useExpos();
+
   const { language } = useLanguage();
 
-  if (isLoading) return <div>Cargando...</div>;
-  if (error) return <div>Hubo un error :( </div>;
+  if (isLoading || isExposLoading) return <div>Cargando...</div>;
+  if (error || exposError) return <div>Hubo un error :( </div>;
 
   const visualData = data.filter((i) => i._type === "visual")[0];
 
@@ -21,6 +27,16 @@ export default function Visual() {
         <PortableText
           value={visualData.descripcion[language] || visualData.descripcion.es}
         />
+      )}
+
+      {expos && (
+        <div>
+          {expos.map((expo) => (
+            <div key={expo._id}>
+              <h3>{expo.titulo}</h3>
+            </div>
+          ))}
+        </div>
       )}
     </section>
   );
