@@ -42,7 +42,7 @@ function App() {
   return (
     <>
       <motion.div drag className="animate-pulse cursor-grab">
-        <h1>
+        <h1 className="py-4 text-center font-[Crozette] text-4xl">
           <NavLink to="/">{configData[0]?.tituloDelSitio}</NavLink>
         </h1>
       </motion.div>

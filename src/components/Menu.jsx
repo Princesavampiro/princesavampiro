@@ -9,7 +9,7 @@ export default function Menu({ sections }) {
 
   return (
     <nav>
-      <ul className="flex flex-col">
+      <ul className="flex flex-wrap justify-center gap-4 text-center">
         {sections
           .sort((a, b) => {
             return (
