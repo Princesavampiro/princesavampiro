@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -c CNAME"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.1",
