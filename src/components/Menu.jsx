@@ -20,7 +20,7 @@ export default function Menu({ sections }) {
             <div key={section._id}>
               <NavLink
                 className={({ isActive }) =>
-                  isActive ? "px-2" : "px-2 hover:underline"
+                  isActive ? "px-2 underline" : "px-2 hover:underline"
                 }
                 to={section.slug.current}
               >
