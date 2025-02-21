@@ -4,7 +4,7 @@ import { components } from "./PortableText/PortableTextComponents";
 
 export default function SectionInfo({ title, text }) {
   return (
-    <div className="m-4 flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4">
       <SectionTitle title={title} />
       {text && (
         <div className="flex flex-col gap-4">
