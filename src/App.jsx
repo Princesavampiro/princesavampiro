@@ -1,5 +1,4 @@
 import { Routes, Route, NavLink } from "react-router";
-import { motion } from "motion/react";
 import { useConfig, useSections } from "./hooks/useData";
 import Menu from "./components/Menu";
 import Home from "./components/Home";
@@ -10,6 +9,7 @@ import Escrito from "./components/Escrito";
 import QuienSoy from "./components/QuienSoy";
 import LanguageButton from "./components/LanguageButton";
 import LoadingScreen from "./components/LoadingScreen";
+import StarBackground from "./components/StarBackground";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -41,11 +41,12 @@ function App() {
 
   return (
     <>
-      <motion.div drag className="animate-pulse cursor-grab">
-        <h1 className="py-4 text-center font-[Crozette] text-4xl">
+      <StarBackground />
+      <div className="animate-pulse">
+        <h1 className="-rotate-1 py-4 pl-[25%] font-[Crozette] text-4xl">
           <NavLink to="/">{configData[0]?.tituloDelSitio}</NavLink>
         </h1>
-      </motion.div>
+      </div>
 
       <Menu sections={data} />
 
