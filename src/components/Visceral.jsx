@@ -2,12 +2,13 @@ import { useSections } from "../hooks/useData";
 import { PortableText } from "@portabletext/react";
 import useLanguage from "../hooks/useLanguage";
 import { components } from "./PortableText/PortableTextComponents";
+import Loading from "./Loading";
 
 export default function Visceral() {
   const { data, isLoading, error } = useSections();
   const { language } = useLanguage();
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <Loading />;
   if (error) return <div>Hubo un error :( </div>;
 
   const visceralData = data.filter((i) => i._type === "visceral")[0];
