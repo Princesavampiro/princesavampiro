@@ -114,7 +114,7 @@ export async function getLives() {
 
 export async function getExposiciones() {
   return client.fetch(
-    `*[_type == 'expo']{
+    `*[_type == 'exposicion']{
       _id,
       titulo,
       slug,
