@@ -8,41 +8,31 @@ export default function Menu({ sections }) {
   if (!sections) return null;
 
   return (
-    <nav className="fixed top-1/4 left-2 z-10">
-      <ul className="flex flex-wrap justify-center gap-4 text-center">
+    <nav className="fixed bottom-4 z-50 flex w-full justify-center">
+      <ul className="flex flex-wrap justify-center rounded-[50%] bg-[#000000ee] px-12 py-6 text-center font-[Nightingale]">
         {sections
           .sort((a, b) => {
             return (
               sectionOrder.indexOf(a._type) - sectionOrder.indexOf(b._type)
             );
           })
-          .map((section) =>
-            section._type === "quienSoy" ? (
+          .map((section, index) => (
+            <div key={section._id}>
               <NavLink
                 className={({ isActive }) =>
-                  isActive
-                    ? "font-[Nightingale] underline"
-                    : "font-[Nightingale] hover:underline"
+                  isActive ? "px-2" : "px-2 hover:underline"
                 }
-                key={section._id}
                 to={section.slug.current}
               >
-                ???
+                {section._type === "quienSoy"
+                  ? "???"
+                  : section.titulo[language] || section.titulo}
               </NavLink>
-            ) : (
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "font-[Nightingale] underline"
-                    : "font-[Nightingale] hover:underline"
-                }
-                key={section._id}
-                to={section.slug.current}
-              >
-                {section.titulo[language] || section.titulo}
-              </NavLink>
-            ),
-          )}
+              {index !== sections.length - 1 && (
+                <span className="mx-auto">✴</span>
+              )}
+            </div>
+          ))}
       </ul>
     </nav>
   );
