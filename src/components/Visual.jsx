@@ -1,7 +1,8 @@
 import { useExpos, useSections } from "../hooks/useData";
-import { PortableText } from "@portabletext/react";
 import useLanguage from "../hooks/useLanguage";
-import SectionTitle from "./SectionTitle";
+import CardGrid from "./CardGrid";
+import Loading from "./Loading";
+import SectionInfo from "./SectionInfo";
 
 export default function Visual() {
   const { data, isLoading, error } = useSections();
@@ -13,31 +14,18 @@ export default function Visual() {
 
   const { language } = useLanguage();
 
-  if (isLoading || isExposLoading) return <div>Cargando...</div>;
+  if (isLoading || isExposLoading) return <Loading />;
   if (error || exposError) return <div>Hubo un error :( </div>;
 
   const visualData = data.filter((i) => i._type === "visual")[0];
 
   return (
-    <section>
-      <SectionTitle
+    <section className="flex flex-col gap-8">
+      <SectionInfo
         title={visualData.titulo[language] || visualData.titulo.es}
+        text={visualData.descripcion[language] || visualData.descripcion.es}
       />
-      {visualData.descripcion && (
-        <PortableText
-          value={visualData.descripcion[language] || visualData.descripcion.es}
-        />
-      )}
-
-      {expos && (
-        <div>
-          {expos.map((expo) => (
-            <div key={expo._id}>
-              <h3>{expo.titulo}</h3>
-            </div>
-          ))}
-        </div>
-      )}
+      {expos && <CardGrid data={expos} />}
     </section>
   );
 }
