@@ -9,7 +9,7 @@ export default function Menu({ sections }) {
 
   return (
     <nav className="fixed bottom-4 z-50 flex w-full justify-center">
-      <ul className="flex flex-wrap justify-center rounded-[50%] bg-[#000000ee] px-12 py-6 text-center font-[Nightingale]">
+      <ul className="flex flex-wrap justify-center rounded-[50%] bg-[#000000ee] px-12 py-6 text-center font-[Nightingale] select-none">
         {sections
           .sort((a, b) => {
             return (
