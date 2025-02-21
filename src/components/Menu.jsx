@@ -16,11 +16,25 @@ export default function Menu({ sections }) {
               sectionOrder.indexOf(a._type) - sectionOrder.indexOf(b._type)
             );
           })
-          .map((section) => (
-            <NavLink key={section._id} to={section.slug.current}>
-              {section.titulo[language] || section.titulo}
-            </NavLink>
-          ))}
+          .map((section) =>
+            section._type === "quienSoy" ? (
+              <NavLink
+                className="font-[Nightingale] hover:underline"
+                key={section._id}
+                to={section.slug.current}
+              >
+                ???
+              </NavLink>
+            ) : (
+              <NavLink
+                className="hover:underline"
+                key={section._id}
+                to={section.slug.current}
+              >
+                {section.titulo[language] || section.titulo}
+              </NavLink>
+            ),
+          )}
       </ul>
     </nav>
   );
