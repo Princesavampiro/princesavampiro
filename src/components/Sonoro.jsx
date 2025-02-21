@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useReleases,
   useSections,
@@ -12,6 +12,9 @@ import CardGrid from "./CardGrid";
 
 export default function Sonoro() {
   const [selectedSection, setSelectedSection] = useState("releases");
+  const [filteredReleases, setFilteredReleases] = useState(null);
+  const [selectedType, setSelectedType] = useState(null);
+
   const { data, isLoading, error } = useSections();
   const {
     data: releases,
@@ -30,6 +33,16 @@ export default function Sonoro() {
   } = useLives();
 
   const { language } = useLanguage();
+
+  useEffect(() => {
+    selectedType
+      ? setFilteredReleases(
+          releases.filter(
+            (release) => release.tipoDeRelease.tipoDeRelease === selectedType,
+          ),
+        )
+      : setFilteredReleases(releases);
+  }, [selectedType, releases]);
 
   if (isLoading || isReleasesLoading || isTiposLoading || isLivesLoading)
     return <Loading />;
@@ -70,14 +83,23 @@ export default function Sonoro() {
               {tipos.map((tipo) => (
                 <li
                   key={tipo._id}
-                  className="rounded border px-2 text-sm uppercase"
+                  className={`cursor-pointer border px-2 text-sm uppercase select-none ${selectedType === tipo.tipoDeRelease ? "bg-red-500" : ""}`}
+                  onClick={() => setSelectedType(tipo.tipoDeRelease)}
                 >
-                  {tipo.tipoDeRelease}
+                  {tipo.tipoDeRelease + "s"}
                 </li>
               ))}
+              <li
+                className={`cursor-pointer border px-2 text-sm uppercase select-none`}
+                onClick={() => setSelectedType(null)}
+              >
+                ✕
+              </li>
             </ul>
           )}
-          {releases && <CardGrid data={releases} release={true} />}
+          {filteredReleases && (
+            <CardGrid data={filteredReleases} release={true} />
+          )}
         </div>
       )}
       {selectedSection === "lives" && (
