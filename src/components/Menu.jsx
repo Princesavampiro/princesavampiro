@@ -8,7 +8,7 @@ export default function Menu({ sections }) {
   if (!sections) return null;
 
   return (
-    <nav>
+    <nav className="fixed top-1/4 left-2 z-10">
       <ul className="flex flex-wrap justify-center gap-4 text-center">
         {sections
           .sort((a, b) => {
@@ -19,7 +19,11 @@ export default function Menu({ sections }) {
           .map((section) =>
             section._type === "quienSoy" ? (
               <NavLink
-                className="font-[Nightingale] hover:underline"
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-[Nightingale] underline"
+                    : "font-[Nightingale] hover:underline"
+                }
                 key={section._id}
                 to={section.slug.current}
               >
@@ -27,7 +31,11 @@ export default function Menu({ sections }) {
               </NavLink>
             ) : (
               <NavLink
-                className="hover:underline"
+                className={({ isActive }) =>
+                  isActive
+                    ? "font-[Nightingale] underline"
+                    : "font-[Nightingale] hover:underline"
+                }
                 key={section._id}
                 to={section.slug.current}
               >

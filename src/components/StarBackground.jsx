@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const STAR_CHARS = ["✧", "⋆", "⭒", "✲"];
+const STAR_CHARS = ["✧", "⋆", "⭒", "✲", ".̶̧̢̤̣̮̮͍͆̏ͫ", "."];
 const NUM_STARS = 150;
 
 function generateStar() {
