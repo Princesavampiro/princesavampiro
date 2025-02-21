@@ -33,7 +33,7 @@ export default function StarBackground() {
             top: `${star.y}%`,
             fontSize: `${star.size}rem`,
             color: "#eee",
-            opacity: 0.5,
+            opacity: 0.8,
             animation: `twinkle ${star.duration}s ease-in-out infinite`,
             animationDelay: `${star.delay}s`,
           }}
@@ -46,10 +46,18 @@ export default function StarBackground() {
         {`
           @keyframes twinkle {
             0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1); }
           }
         `}
       </style>
+      <div
+        style={{
+          WebkitMaskImage:
+            "radial-gradient(ellipse, black 20%, transparent 100%)",
+          maskImage: "radial-gradient(ellipse, black 20%, transparent 100%)",
+        }}
+        className="h-full w-full bg-black"
+      />
     </div>
   );
 }
