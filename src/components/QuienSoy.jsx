@@ -2,15 +2,14 @@ import { useQuienSoy } from "../hooks/useData";
 import { PortableText } from "@portabletext/react";
 import useLanguage from "../hooks/useLanguage";
 import { components } from "./PortableText/PortableTextComponents";
+import Loading from "./Loading";
 
 export default function QuienSoy() {
   const { data, isLoading, error } = useQuienSoy();
   const { language } = useLanguage();
 
-  if (isLoading) return <div>Cargando...</div>;
+  if (isLoading) return <Loading />;
   if (error) return <div>Hubo un error :( </div>;
-
-  console.log(data);
 
   return (
     <section className="flex flex-col gap-16 pb-16">

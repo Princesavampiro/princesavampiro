@@ -9,6 +9,7 @@ import Visual from "./components/Visual";
 import Escrito from "./components/Escrito";
 import QuienSoy from "./components/QuienSoy";
 import LanguageButton from "./components/LanguageButton";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -35,10 +36,9 @@ function App() {
     }
   };
 
-  if (isLoading || isConfigLoading) return <div>Cargando...</div>;
+  if (isLoading || isConfigLoading) return <LoadingScreen />;
   if (error || configError) return <div>Hubo un error :( </div>;
 
-  console.log(configData);
   return (
     <>
       <motion.div drag className="animate-pulse cursor-grab">
