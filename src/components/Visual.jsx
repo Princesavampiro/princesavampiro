@@ -20,7 +20,7 @@ export default function Visual() {
   const visualData = data.filter((i) => i._type === "visual")[0];
 
   return (
-    <section className="flex flex-col gap-8">
+    <section className="flex w-full flex-col items-center gap-8">
       <SectionInfo
         title={visualData.titulo[language] || visualData.titulo.es}
         text={visualData.descripcion[language] || visualData.descripcion.es}
