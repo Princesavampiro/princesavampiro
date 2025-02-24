@@ -70,3 +70,10 @@ export function useBlogPosts() {
     queryFn: sanityUtils.getBlogPosts,
   });
 }
+
+export function useRelease(slug) {
+  return useQuery({
+    queryKey: ["release", slug],
+    queryFn: () => sanityUtils.getRelease(slug),
+  });
+}
