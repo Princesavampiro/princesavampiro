@@ -63,20 +63,10 @@ export async function getReleases() {
         'url': asset->url,
         'dimensions': asset->metadata.dimensions,
       },
-      texto,
       tipoDeRelease->{
         _id,
         tipoDeRelease
       },
-      embed,
-      imagenes[]{
-        'url': asset->url,
-        'dimensions': asset->metadata.dimensions,
-      },
-      links[]{
-        url,
-        titulo
-      }
     }`,
   );
 }
@@ -175,5 +165,36 @@ export async function getBlogPosts() {
       fecha,
       texto,
     }`,
+  );
+}
+
+export async function getRelease(slug) {
+  return client.fetch(
+    `*[_type == 'release' && slug.current == $slug]{
+      _id,
+      titulo,
+      slug,
+      fecha,
+      sello,
+      artwork {
+        'url': asset->url,
+        'dimensions': asset->metadata.dimensions,
+      },
+      texto,
+      tipoDeRelease->{
+        _id,
+        tipoDeRelease
+      },
+      embed,
+      imagenes[]{
+        'url': asset->url,
+        'dimensions': asset->metadata.dimensions,
+      },
+      links[]{
+        url,
+        titulo
+      }
+    }`,
+    { slug },
   );
 }
