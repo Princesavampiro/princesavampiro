@@ -79,18 +79,18 @@ export default function Sonoro() {
       {selectedSection === "releases" && (
         <div className="flex w-full flex-col items-center gap-8">
           {tipos && (
-            <ul className="flex gap-2">
+            <ul className="flex">
               {tipos.map((tipo) => (
                 <li
                   key={tipo._id}
-                  className={`cursor-pointer border px-2 text-sm uppercase select-none ${selectedType === tipo.tipoDeRelease ? "bg-red-500" : ""}`}
+                  className={`cursor-pointer rounded-[50%] border px-4 text-sm uppercase select-none ${selectedType === tipo.tipoDeRelease ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}
                   onClick={() => setSelectedType(tipo.tipoDeRelease)}
                 >
                   {tipo.tipoDeRelease + "s"}
                 </li>
               ))}
               <li
-                className={`cursor-pointer border px-2 text-sm uppercase select-none`}
+                className={`cursor-pointer rounded-[50%] border px-2 text-sm uppercase select-none hover:bg-white hover:text-black`}
                 onClick={() => setSelectedType(null)}
               >
                 ✕
