@@ -40,7 +40,7 @@ function App() {
   if (error || configError) return <div>Hubo un error :( </div>;
 
   return (
-    <>
+    <main className="pb-32">
       <StarBackground />
       <div className="animate-pulse">
         <h1 className="-rotate-1 py-4 pl-[25%] font-[Crozette] text-4xl">
@@ -61,7 +61,7 @@ function App() {
         ))}
       </Routes>
       <LanguageButton />
-    </>
+    </main>
   );
 }
 

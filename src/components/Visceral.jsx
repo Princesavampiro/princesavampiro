@@ -16,7 +16,7 @@ export default function Visceral() {
   console.log(visceralData);
 
   return (
-    <section className="pb-16">
+    <section className="">
       <h1 className="almendra py-8 text-center text-8xl">
         {visceralData.titulo}
       </h1>
