@@ -89,6 +89,7 @@ export async function getLives() {
       fecha,
       texto,
       imagenes[]{
+        _key,
         'url': asset->url,
         'dimensions': asset->metadata.dimensions,
       },
@@ -187,6 +188,7 @@ export async function getRelease(slug) {
       },
       embed,
       imagenes[]{
+        _key,
         'url': asset->url,
         'dimensions': asset->metadata.dimensions,
       },
