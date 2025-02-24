@@ -1,3 +1,5 @@
+import { NavLink } from "react-router";
+
 export default function CardGrid({ data, release = false }) {
   const size = {
     small: "?h=500&fm=webp",
@@ -13,7 +15,8 @@ export default function CardGrid({ data, release = false }) {
   return (
     <ul className="mx-auto my-[50px] flex w-full flex-wrap items-end justify-center gap-4 px-64">
       {data.map((item) => (
-        <li
+        <NavLink
+          to={item.slug.current}
           key={item._id}
           style={{ transform: getRandomTranslation() }}
           className={`z-0 flex max-w-[200px] flex-col items-center justify-center rounded-lg hover:z-10`}
@@ -22,19 +25,19 @@ export default function CardGrid({ data, release = false }) {
             {!release
               ? item.imagenes && (
                   <img
-                    className="rounded-full"
+                    className="rounded-sm"
                     src={item.imagenes[0].url + size.small}
                   />
                 )
               : item.artwork && (
                   <img
-                    className="rounded-full"
+                    className="rounded-sm"
                     src={item.artwork.url + size.small}
                   />
                 )}
           </div>
           <h3 className="text-center text-sm">{item.titulo}</h3>
-        </li>
+        </NavLink>
       ))}
     </ul>
   );
