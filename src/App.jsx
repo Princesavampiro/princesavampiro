@@ -10,6 +10,8 @@ import QuienSoy from "./components/QuienSoy";
 import LanguageButton from "./components/LanguageButton";
 import LoadingScreen from "./components/LoadingScreen";
 import StarBackground from "./components/StarBackground";
+import Release from "./components/Release";
+import Exposicion from "./components/Exposicion";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -52,13 +54,37 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        {data.map((section) => (
-          <Route
-            key={section._id}
-            path={section.slug.current}
-            element={selectSection(section)}
-          />
-        ))}
+        {data.flatMap((section) => {
+          const routes = [
+            <Route
+              key={section._id}
+              path={section.slug.current}
+              element={selectSection(section)}
+            />,
+          ];
+
+          if (section._type === "sonoro") {
+            routes.push(
+              <Route
+                key={`${section._id}-detail`}
+                path={`${section.slug.current}/:slug`}
+                element={<Release />}
+              />,
+            );
+          }
+
+          if (section._type === "visual") {
+            routes.push(
+              <Route
+                key={`${section._id}-detail`}
+                path={`${section.slug.current}/:slug`}
+                element={<Exposicion />}
+              />,
+            );
+          }
+
+          return routes;
+        })}
       </Routes>
       <LanguageButton />
     </main>
