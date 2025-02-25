@@ -1,0 +1,24 @@
+import { motion, useDragControls } from "motion/react";
+
+export default function DraggableWindow({ title, children }) {
+  const controls = useDragControls();
+
+  return (
+    <motion.div
+      drag
+      dragListener={false}
+      dragControls={controls}
+      whileDrag={{ scale: 0.9 }}
+      dragMomentum={false}
+      className={`flex h-full flex-col overflow-hidden rounded-lg border border-gray-500 bg-[#00000022] backdrop-blur-sm select-none`}
+    >
+      <div
+        onPointerDown={(event) => controls.start(event)}
+        className="flex min-h-8 cursor-grab items-center justify-center border-b"
+      >
+        {title && title}
+      </div>
+      <div className="overflow-y-auto p-4">{children}</div>
+    </motion.div>
+  );
+}
