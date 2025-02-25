@@ -1,7 +1,11 @@
+import ItemContainer from "./ItemContainer";
+
 export default function Exposicion() {
   return (
-    <section>
-      <h1>Exposicion</h1>
-    </section>
+    <ItemContainer>
+      <section>
+        <h1>Exposicion</h1>
+      </section>
+    </ItemContainer>
   );
 }

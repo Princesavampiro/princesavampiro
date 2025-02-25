@@ -25,7 +25,7 @@ export default function Visual() {
         title={visualData.titulo[language] || visualData.titulo.es}
         text={visualData.descripcion[language] || visualData.descripcion.es}
       />
-      {expos && <CardGrid data={expos} />}
+      {expos && <CardGrid data={expos} contentType="expo" />}
     </section>
   );
 }
