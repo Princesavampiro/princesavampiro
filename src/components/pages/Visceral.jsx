@@ -1,10 +1,10 @@
-import { useSections } from "../../hooks/useData";
+import { motion } from "motion/react";
 import { PortableText } from "@portabletext/react";
 import useLanguage from "../../hooks/useLanguage";
-import { components } from "../PortableText/PortableTextComponents";
+import { useSections } from "../../hooks/useData";
 import Loading from "../Loading";
-import { motion } from "motion/react";
 import DraggableWindow from "../DraggableWindow";
+import { components } from "../PortableText/PortableTextComponents";
 
 export default function Visceral() {
   const { data, isLoading, error } = useSections();

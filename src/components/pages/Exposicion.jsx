@@ -1,4 +1,4 @@
-import ItemContainer from "./ItemContainer";
+import ItemContainer from "../ItemContainer";
 
 export default function Exposicion() {
   return (

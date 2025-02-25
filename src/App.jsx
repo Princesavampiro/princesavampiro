@@ -10,9 +10,9 @@ import QuienSoy from "./components/pages/QuienSoy";
 import LanguageButton from "./components/LanguageButton";
 import LoadingScreen from "./components/LoadingScreen";
 import StarBackground from "./components/StarBackground";
-import Release from "./components/Release";
-import Live from "./components/Live";
-import Exposicion from "./components/Exposicion";
+import Release from "./components/pages/Release";
+import Live from "./components/pages/Live";
+import Exposicion from "./components/pages/Exposicion";
 
 function App() {
   const { data, isLoading, error } = useSections();

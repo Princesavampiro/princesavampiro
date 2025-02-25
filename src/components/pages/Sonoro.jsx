@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router";
 import {
   useReleases,
   useSections,
@@ -6,11 +7,10 @@ import {
   useLives,
 } from "../../hooks/useData";
 import useLanguage from "../../hooks/useLanguage";
-import SectionInfo from "../SectionInfo";
 import Loading from "../Loading";
-import CardGrid from "../CardGrid";
+import SectionInfo from "../SectionInfo";
 import DraggableWindow from "../DraggableWindow";
-import { Outlet } from "react-router";
+import CardGrid from "../CardGrid";
 
 export default function Sonoro() {
   const [selectedSection, setSelectedSection] = useState("releases");

@@ -1,13 +1,13 @@
-import { useRelease } from "../hooks/useData";
 import { NavLink, useParams } from "react-router";
-import Loading from "./Loading";
 import { PortableText } from "@portabletext/react";
-import useLanguage from "../hooks/useLanguage";
-import { components } from "./PortableText/PortableTextComponents";
-import ImageGallery from "./ImageGallery";
-import LinksList from "./LinksList";
-import DraggableWindow from "./DraggableWindow";
-import ItemContainer from "./ItemContainer";
+import useLanguage from "../../hooks/useLanguage";
+import { useRelease } from "../../hooks/useData";
+import Loading from "../Loading";
+import ItemContainer from "../ItemContainer";
+import DraggableWindow from "../DraggableWindow";
+import ImageGallery from "../ImageGallery";
+import LinksList from "../LinksList";
+import { components } from "../PortableText/PortableTextComponents";
 
 export default function Release() {
   const { slug } = useParams();

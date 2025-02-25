@@ -1,12 +1,12 @@
-import { useLives } from "../hooks/useData";
 import { NavLink, useParams } from "react-router";
-import Loading from "./Loading";
 import { PortableText } from "@portabletext/react";
-import useLanguage from "../hooks/useLanguage";
-import { components } from "./PortableText/PortableTextComponents";
-import ImageGallery from "./ImageGallery";
-import LinksList from "./LinksList";
-import ItemContainer from "./ItemContainer";
+import useLanguage from "../../hooks/useLanguage";
+import { useLives } from "../../hooks/useData";
+import Loading from "../Loading";
+import ItemContainer from "../ItemContainer";
+import ImageGallery from "../ImageGallery";
+import LinksList from "../LinksList";
+import { components } from "../PortableText/PortableTextComponents";
 
 export default function Live() {
   const { slug } = useParams();
