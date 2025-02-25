@@ -31,6 +31,7 @@ export async function getQuienSoy() {
       titulo,
       bio,
       comentarios[]{
+        _key,
         autor,
         es,
         en
@@ -44,6 +45,7 @@ export async function getQuienSoy() {
         url
       },
       links[]{
+        _key,
         url,
         titulo
       }
@@ -193,6 +195,7 @@ export async function getRelease(slug) {
         'dimensions': asset->metadata.dimensions,
       },
       links[]{
+        _key,
         url,
         titulo
       }

@@ -35,7 +35,7 @@ export default function Visceral() {
       {visceralData.links && (
         <ul className="flex flex-wrap justify-center gap-4 px-32 pt-16">
           {visceralData.links.map((link, index) => (
-            <li key={link._id}>
+            <li key={link._key}>
               <a className="hover:underline" href={link.url} target="_blank">
                 {link.titulo}
               </a>
