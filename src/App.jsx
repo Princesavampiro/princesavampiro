@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink } from "react-router";
+import { Routes, Route, NavLink, useLocation } from "react-router";
 import { useConfig, useSections } from "./hooks/useData";
 import Menu from "./components/Menu";
 import Home from "./components/Home";
@@ -11,6 +11,7 @@ import LanguageButton from "./components/LanguageButton";
 import LoadingScreen from "./components/LoadingScreen";
 import StarBackground from "./components/StarBackground";
 import Release from "./components/Release";
+import Live from "./components/Live";
 import Exposicion from "./components/Exposicion";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     isLoading: isConfigLoading,
     error: configError,
   } = useConfig();
+  const location = useLocation();
 
   const selectSection = (section) => {
     switch (section._type) {
@@ -42,7 +44,7 @@ function App() {
   if (error || configError) return <div>Hubo un error :( </div>;
 
   return (
-    <main className="pb-32">
+    <main className="flex min-h-screen flex-col">
       <StarBackground />
       <div className="animate-pulse">
         <h1 className="-rotate-1 py-4 pl-[25%] font-[Crozette] text-4xl">
@@ -50,39 +52,40 @@ function App() {
         </h1>
       </div>
 
-      <Menu sections={data} />
+      {location.pathname !== "/" && <Menu sections={data} />}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home sections={data} />} />
         {data.flatMap((section) => {
           const routes = [
             <Route
               key={section._id}
               path={section.slug.current}
               element={selectSection(section)}
-            />,
+            >
+              {section._type === "sonoro" && (
+                <Route
+                  key={`${section._id}-detail`}
+                  path={`release/:slug`}
+                  element={<Release />}
+                />
+              )}
+              {section._type === "sonoro" && (
+                <Route
+                  key={`${section._id}-detail`}
+                  path={`live/:slug`}
+                  element={<Live />}
+                />
+              )}
+              {section._type === "visual" && (
+                <Route
+                  key={`${section._id}-detail`}
+                  path={`expo/:slug`}
+                  element={<Exposicion />}
+                />
+              )}
+            </Route>,
           ];
-
-          if (section._type === "sonoro") {
-            routes.push(
-              <Route
-                key={`${section._id}-detail`}
-                path={`${section.slug.current}/:slug`}
-                element={<Release />}
-              />,
-            );
-          }
-
-          if (section._type === "visual") {
-            routes.push(
-              <Route
-                key={`${section._id}-detail`}
-                path={`${section.slug.current}/:slug`}
-                element={<Exposicion />}
-              />,
-            );
-          }
-
           return routes;
         })}
       </Routes>
