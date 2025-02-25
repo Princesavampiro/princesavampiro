@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 
-export default function CardGrid({ data, release = false }) {
+export default function CardGrid({ data, contentType }) {
   const size = {
     small: "?h=500&fm=webp",
     large: "?h=1080&fm=webp",
@@ -8,21 +8,21 @@ export default function CardGrid({ data, release = false }) {
 
   const getRandomTranslation = () => {
     const x = Math.random() * 0;
-    const y = Math.random() * 200 - 100;
+    const y = Math.random() * 100 - 50;
     return `translate(${x}px, ${y}px)`;
   };
 
   return (
-    <ul className="mx-auto my-[50px] flex w-full flex-wrap items-end justify-center gap-4 px-64">
+    <ul className="mx-auto my-[50px] flex w-full flex-wrap items-end justify-center gap-4 p-4">
       {data.map((item) => (
         <NavLink
-          to={item.slug.current}
+          to={contentType + "/" + item.slug.current}
           key={item._id}
           style={{ transform: getRandomTranslation() }}
           className={`z-0 flex max-w-[200px] flex-col items-center justify-center rounded-lg hover:z-10`}
         >
           <div className="hover:brightness-180 hover:invert hover:saturate-200">
-            {!release
+            {!contentType.includes("release")
               ? item.imagenes && (
                   <img
                     className="rounded-sm"
