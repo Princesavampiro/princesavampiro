@@ -1,8 +1,8 @@
-import { useQuienSoy } from "../hooks/useData";
+import { useQuienSoy } from "../../hooks/useData";
 import { PortableText } from "@portabletext/react";
-import useLanguage from "../hooks/useLanguage";
-import { components } from "./PortableText/PortableTextComponents";
-import Loading from "./Loading";
+import useLanguage from "../../hooks/useLanguage";
+import { components } from "../PortableText/PortableTextComponents";
+import Loading from "../Loading";
 
 export default function QuienSoy() {
   const { data, isLoading, error } = useQuienSoy();

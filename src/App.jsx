@@ -1,12 +1,12 @@
 import { Routes, Route, NavLink, useLocation } from "react-router";
 import { useConfig, useSections } from "./hooks/useData";
 import Menu from "./components/Menu";
-import Home from "./components/Home";
-import Visceral from "./components/Visceral";
-import Sonoro from "./components/Sonoro";
-import Visual from "./components/Visual";
-import Escrito from "./components/Escrito";
-import QuienSoy from "./components/QuienSoy";
+import Home from "./components/pages/Home";
+import Visceral from "./components/pages/Visceral";
+import Sonoro from "./components/pages/Sonoro";
+import Visual from "./components/pages/Visual";
+import Escrito from "./components/pages/Escrito";
+import QuienSoy from "./components/pages/QuienSoy";
 import LanguageButton from "./components/LanguageButton";
 import LoadingScreen from "./components/LoadingScreen";
 import StarBackground from "./components/StarBackground";

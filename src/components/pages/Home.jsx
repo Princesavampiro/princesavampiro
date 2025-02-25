@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import useLanguage from "../hooks/useLanguage";
+import useLanguage from "../../hooks/useLanguage";
 
 export default function Home({ sections }) {
   const sectionOrder = ["visceral", "sonoro", "visual", "escrito", "quienSoy"];

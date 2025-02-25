@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useArticulos, useBlogPosts, useSections } from "../hooks/useData";
-import useLanguage from "../hooks/useLanguage";
-import Loading from "./Loading";
-import SectionInfo from "./SectionInfo";
+import { useArticulos, useBlogPosts, useSections } from "../../hooks/useData";
+import useLanguage from "../../hooks/useLanguage";
+import Loading from "../Loading";
+import SectionInfo from "../SectionInfo";
 
 export default function Visual() {
   const [selectedSection, setSelectedSection] = useState("investigacion");

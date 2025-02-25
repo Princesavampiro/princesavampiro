@@ -1,8 +1,8 @@
-import { useExpos, useSections } from "../hooks/useData";
-import useLanguage from "../hooks/useLanguage";
-import CardGrid from "./CardGrid";
-import Loading from "./Loading";
-import SectionInfo from "./SectionInfo";
+import { useExpos, useSections } from "../../hooks/useData";
+import useLanguage from "../../hooks/useLanguage";
+import CardGrid from "../CardGrid";
+import Loading from "../Loading";
+import SectionInfo from "../SectionInfo";
 
 export default function Visual() {
   const { data, isLoading, error } = useSections();

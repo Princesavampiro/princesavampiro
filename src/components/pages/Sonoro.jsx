@@ -4,12 +4,12 @@ import {
   useSections,
   useTiposDeReleases,
   useLives,
-} from "../hooks/useData";
-import useLanguage from "../hooks/useLanguage";
-import SectionInfo from "./SectionInfo";
-import Loading from "./Loading";
-import CardGrid from "./CardGrid";
-import DraggableWindow from "./DraggableWindow";
+} from "../../hooks/useData";
+import useLanguage from "../../hooks/useLanguage";
+import SectionInfo from "../SectionInfo";
+import Loading from "../Loading";
+import CardGrid from "../CardGrid";
+import DraggableWindow from "../DraggableWindow";
 import { Outlet } from "react-router";
 
 export default function Sonoro() {
