@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink, useLocation } from "react-router";
+import { Routes, Route, NavLink } from "react-router";
 import { useConfig, useSections } from "./hooks/useData";
 import Menu from "./components/Menu";
 import Home from "./components/pages/Home";
@@ -21,7 +21,6 @@ function App() {
     isLoading: isConfigLoading,
     error: configError,
   } = useConfig();
-  const location = useLocation();
 
   const selectSection = (section) => {
     switch (section._type) {
@@ -52,7 +51,7 @@ function App() {
         </h1>
       </div>
 
-      {location.pathname !== "/" && <Menu sections={data} />}
+      <Menu sections={data} />
 
       <Routes>
         <Route path="/" element={<Home sections={data} />} />

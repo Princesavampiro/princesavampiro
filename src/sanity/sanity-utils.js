@@ -18,7 +18,10 @@ export async function getSections() {
       bio,
       texto,
       _type,
-      links
+      links,
+      icono {
+        'url': asset->url,
+      },
     }`,
   );
 }

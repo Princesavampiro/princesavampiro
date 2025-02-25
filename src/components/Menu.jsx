@@ -1,39 +1,62 @@
 import { NavLink } from "react-router";
 import useLanguage from "../hooks/useLanguage";
+import { motion, useDragControls } from "motion/react";
 
 export default function Menu({ sections }) {
   const sectionOrder = ["visceral", "sonoro", "visual", "escrito", "quienSoy"];
   const { language } = useLanguage();
+  const controlsArray = sections ? sections.map(() => useDragControls()) : [];
 
   if (!sections) return null;
 
   return (
-    <nav className="fixed bottom-4 z-50 flex w-full justify-center">
-      <ul className="flex flex-wrap justify-center rounded-[50%] bg-[#000000ee] px-12 py-6 text-center font-[Nightingale] select-none">
-        {sections
-          .sort((a, b) => {
-            return (
-              sectionOrder.indexOf(a._type) - sectionOrder.indexOf(b._type)
-            );
-          })
-          .map((section, index) => (
-            <div key={section._id}>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? "px-2 underline" : "px-2 hover:underline"
-                }
-                to={section.slug.current}
+    <section className="pointer-events-none fixed inset-0 flex h-screen w-full animate-pulse items-center justify-center gap-4 text-center font-[Nightingale] italic select-none">
+      {sections
+        .sort((a, b) => {
+          return sectionOrder.indexOf(a._type) - sectionOrder.indexOf(b._type);
+        })
+        .map((section, index) => (
+          <motion.div
+            drag
+            dragListener={false}
+            dragControls={controlsArray[index]}
+            whileDrag={{ scale: 0.9 }}
+            dragMomentum={false}
+            key={section._id}
+            className="pointer-events-auto flex flex-col items-center px-2"
+          >
+            {index !== sections.length && (
+              <div
+                className="mx-auto cursor-grab"
+                onPointerDown={(event) => controlsArray[index].start(event)}
               >
+                ✴
+              </div>
+            )}
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "underline" : "hover:underline"
+              }
+              to={section.slug.current}
+            >
+              {section.icono && (
+                <div>
+                  <img
+                    src={section.icono.url + "?w=300&fm=webp"}
+                    width={100}
+                    alt=""
+                    className="pointer-events-none"
+                  />
+                </div>
+              )}
+              <div>
                 {section._type === "quienSoy"
                   ? "???"
                   : section.titulo[language] || section.titulo}
-              </NavLink>
-              {index !== sections.length - 1 && (
-                <span className="mx-auto">✴</span>
-              )}
-            </div>
-          ))}
-      </ul>
-    </nav>
+              </div>
+            </NavLink>
+          </motion.div>
+        ))}
+    </section>
   );
 }
