@@ -1,3 +1,14 @@
+import { motion } from "motion/react";
+
 export default function SectionTitle({ title }) {
-  return <h1 className="py-8 pl-8 font-[Nightingale] text-2xl">{title}</h1>;
+  return (
+    <motion.div
+      drag
+      whileDrag={{ scale: 0.9 }}
+      dragMomentum={false}
+      className="almendra fixed w-max cursor-grab text-9xl uppercase"
+    >
+      {title}
+    </motion.div>
+  );
 }
