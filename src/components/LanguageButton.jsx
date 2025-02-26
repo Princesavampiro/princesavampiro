@@ -5,7 +5,7 @@ export default function LanguageButton() {
   return (
     <div
       onClick={() => setLanguage(language === "es" ? "en" : "es")}
-      className="fixed top-1/2 right-8 flex h-6 w-12 rotate-6 cursor-pointer items-center justify-center rounded-[50%] bg-[#d7d7d7] text-xs text-black select-none hover:brightness-200"
+      className="fixed top-8 right-8 flex h-6 w-12 cursor-pointer items-center justify-center rounded-[50%] bg-[#d7d7d7] text-sm text-black select-none hover:brightness-120"
     >
       {language == "es" ? "EN" : "ES"}
     </div>
