@@ -10,6 +10,7 @@ import SectionContent from "./components/SectionContent";
 import SectionTitle from "./components/SectionTitle";
 import HomeButton from "./components/HomeButton";
 import SectionLinks from "./components/SectionLinks";
+import SectionImage from "./components/SectionImage";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -51,6 +52,7 @@ function App() {
 
           <SectionContent />
           <SectionLinks />
+          <SectionImage />
         </div>
       )}
       {location.pathname !== "/" && <HomeButton />}
