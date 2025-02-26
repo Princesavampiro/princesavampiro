@@ -7,6 +7,7 @@ import StarBackground from "./components/StarBackground";
 import Player from "./components/Player/Player";
 import SectionInfo from "./components/SectionInfo";
 import SectionContent from "./components/SectionContent";
+import SectionTitle from "./components/SectionTitle";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -35,6 +36,9 @@ function App() {
 
       {location.pathname !== "/" && (
         <div className="grid h-full min-h-screen grid-cols-2 place-items-center gap-8 p-16">
+          {location.pathname === "/visceral" && (
+            <SectionTitle title="Visceral" />
+          )}
           <SectionInfo
             title={
               configData[0]?.tituloDelSitio.replace(" ", "_") +
