@@ -23,7 +23,7 @@ export default function Menu({ sections }) {
             whileDrag={{ scale: 0.9 }}
             dragMomentum={false}
             key={section._id}
-            className="pointer-events-auto flex flex-col items-center px-2"
+            className="pointer-events-auto flex size-[120px] flex-col items-center px-2"
           >
             {index !== sections.length && (
               <div
