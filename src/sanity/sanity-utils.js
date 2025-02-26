@@ -4,6 +4,12 @@ export async function getConfig() {
   return client.fetch(
     `*[_type == "config"] {
       tituloDelSitio,
+      audio {
+        url,
+        archivo {
+        'url': asset->url,
+        }
+      },
     }`,
   );
 }
