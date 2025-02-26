@@ -1,7 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import { useCurrentSection } from "../hooks/useCurrentSection";
 import useLanguage from "../hooks/useLanguage";
-import SectionTitle from "./SectionTitle";
 import DraggableWindow from "./DraggableWindow";
 import { components } from "./PortableText/PortableTextComponents";
 
@@ -24,7 +23,7 @@ export default function SectionInfo({ title }) {
 
   return (
     <DraggableWindow title={title} className={"max-h-[40vh] max-w-prose"}>
-      <SectionTitle title={sectionTitle} />
+      <h1 className="py-8 pl-8 font-[Nightingale] text-2xl">{sectionTitle}</h1>
       <div className="flex flex-col gap-4">
         <PortableText components={components} value={text} />
       </div>
