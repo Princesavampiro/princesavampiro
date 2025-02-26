@@ -1,6 +1,6 @@
 import { motion, useDragControls } from "motion/react";
 
-export default function DraggableWindow({ title, children }) {
+export default function DraggableWindow({ title, children, className }) {
   const controls = useDragControls();
 
   return (
@@ -10,7 +10,7 @@ export default function DraggableWindow({ title, children }) {
       dragControls={controls}
       whileDrag={{ scale: 0.9 }}
       dragMomentum={false}
-      className={`flex h-full flex-col overflow-hidden rounded-lg border border-gray-500 bg-[#00000022] backdrop-blur-sm select-none`}
+      className={`flex h-full flex-col overflow-hidden rounded-lg border border-gray-500 bg-[#00000022] backdrop-blur-sm select-none ${className}`}
     >
       <div
         onPointerDown={(event) => controls.start(event)}
