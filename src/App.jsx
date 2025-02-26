@@ -13,6 +13,7 @@ import StarBackground from "./components/StarBackground";
 import Release from "./components/pages/Release";
 import Live from "./components/pages/Live";
 import Exposicion from "./components/pages/Exposicion";
+import Player from "./components/Player/Player";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -89,6 +90,7 @@ function App() {
         })}
       </Routes>
       <LanguageButton />
+      <Player />
     </main>
   );
 }
