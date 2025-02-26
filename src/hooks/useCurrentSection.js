@@ -9,7 +9,7 @@ export function useCurrentSection() {
 
   useEffect(() => {
     if (data) {
-      const pathname = location.pathname.substring(1);
+      const pathname = location.pathname.split("/")[1];
       const foundSection = data.find(
         (section) => section.slug.current === pathname,
       );

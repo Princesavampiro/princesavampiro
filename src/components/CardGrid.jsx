@@ -1,6 +1,10 @@
 import { NavLink } from "react-router";
+import { useLocation } from "react-router";
 
 export default function CardGrid({ data, contentType }) {
+  const location = useLocation(); // Get current path
+  const currentPath = location.pathname;
+
   const size = {
     small: "?h=500&fm=webp",
     large: "?h=1080&fm=webp",
@@ -16,7 +20,7 @@ export default function CardGrid({ data, contentType }) {
     <ul className="mx-auto my-[50px] flex w-full flex-wrap items-end justify-center gap-4 p-4">
       {data.map((item) => (
         <NavLink
-          to={contentType + "/" + item.slug.current}
+          to={currentPath + "/" + item.slug.current}
           key={item._id}
           style={{ transform: getRandomTranslation() }}
           className={`z-0 flex max-w-[150px] flex-col items-center justify-center rounded-lg hover:z-10`}

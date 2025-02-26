@@ -38,7 +38,8 @@ function App() {
           <SectionInfo
             title={
               configData[0]?.tituloDelSitio.replace(" ", "_") +
-              location.pathname
+              "/" +
+              location.pathname.split("/")[1]
             }
           />
 
