@@ -26,6 +26,9 @@ export async function getSections() {
       icono {
         'url': asset->url,
       },
+      imagen {
+        'url': asset->url,
+      },
     }`,
   );
 }
