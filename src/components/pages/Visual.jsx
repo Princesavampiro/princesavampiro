@@ -14,18 +14,10 @@ export default function Visual() {
 
   const { language } = useLanguage();
 
-  if (isLoading || isExposLoading) return <Loading />;
+  if (isLoading || isExposLoading || !expos) return;
   if (error || exposError) return <div>Hubo un error :( </div>;
 
   const visualData = data.filter((i) => i._type === "visual")[0];
 
-  return (
-    <section className="flex w-full flex-col items-center gap-8">
-      <SectionInfo
-        title={visualData.titulo[language] || visualData.titulo.es}
-        text={visualData.descripcion[language] || visualData.descripcion.es}
-      />
-      {expos && <CardGrid data={expos} contentType="expo" />}
-    </section>
-  );
+  return <CardGrid data={expos} contentType="expo" />;
 }

@@ -19,7 +19,7 @@ export default function CardGrid({ data, contentType }) {
           to={contentType + "/" + item.slug.current}
           key={item._id}
           style={{ transform: getRandomTranslation() }}
-          className={`z-0 flex max-w-[200px] flex-col items-center justify-center rounded-lg hover:z-10`}
+          className={`z-0 flex max-w-[150px] flex-col items-center justify-center rounded-lg hover:z-10`}
         >
           <div className="hover:brightness-180 hover:invert hover:saturate-200">
             {!contentType.includes("release")
