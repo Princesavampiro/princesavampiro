@@ -20,8 +20,6 @@ export async function getSections() {
       _id,
       slug,
       titulo,
-      descripcion,
-      bio,
       texto,
       _type,
       links,
