@@ -8,6 +8,7 @@ import Player from "./components/Player/Player";
 import SectionInfo from "./components/SectionInfo";
 import SectionContent from "./components/SectionContent";
 import SectionTitle from "./components/SectionTitle";
+import HomeButton from "./components/HomeButton";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -50,7 +51,7 @@ function App() {
           <SectionContent />
         </div>
       )}
-
+      {location.pathname !== "/" && <HomeButton />}
       <LanguageButton />
       <Player />
     </main>
