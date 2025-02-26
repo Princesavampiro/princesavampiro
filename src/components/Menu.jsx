@@ -40,7 +40,7 @@ export default function Menu({ sections }) {
               to={section.slug.current}
             >
               {section.icono && (
-                <div>
+                <div className="hover:brightness-120 hover:saturate-200">
                   <img
                     src={section.icono.url + "?w=300&fm=webp"}
                     width={100}
