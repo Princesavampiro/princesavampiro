@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 
 export default function CardGrid({ data, contentType }) {
   const location = useLocation(); // Get current path
-  const currentPath = location.pathname;
+  const currentPath = location.pathname.split("/")[1];
 
   const size = {
     small: "?h=500&fm=webp",
