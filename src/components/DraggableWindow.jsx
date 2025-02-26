@@ -18,7 +18,7 @@ export default function DraggableWindow({ title, children, className }) {
       >
         {title && title}
       </div>
-      <div className="overflow-y-auto p-4">{children}</div>
+      <div className="overflow-y-auto">{children}</div>
     </motion.div>
   );
 }

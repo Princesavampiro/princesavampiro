@@ -23,9 +23,13 @@ export default function SectionInfo({ title }) {
 
   return (
     <DraggableWindow title={title} className={"max-h-[40vh] max-w-prose"}>
-      <h1 className="py-8 pl-8 font-[Nightingale] text-2xl">{sectionTitle}</h1>
-      <div className="flex flex-col gap-4">
-        <PortableText components={components} value={text} />
+      <div className="p-4">
+        <h1 className="py-8 pl-8 font-[Nightingale] text-2xl">
+          {sectionTitle}
+        </h1>
+        <div className="flex flex-col gap-4">
+          <PortableText components={components} value={text} />
+        </div>
       </div>
     </DraggableWindow>
   );
