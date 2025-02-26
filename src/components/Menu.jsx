@@ -27,7 +27,7 @@ export default function Menu({ sections }) {
           >
             {index !== sections.length && (
               <div
-                className="mx-auto cursor-grab"
+                className="mx-auto animate-spin cursor-grab hover:animate-none"
                 onPointerDown={(event) => controlsArray[index].start(event)}
               >
                 ✴

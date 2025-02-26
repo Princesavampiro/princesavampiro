@@ -23,7 +23,7 @@ export default function Player() {
       )}
       <div
         onPointerDown={(event) => controls.start(event)}
-        className="cursor-grab"
+        className="animate-spin cursor-grab hover:animate-none"
       >
         ✴
       </div>
