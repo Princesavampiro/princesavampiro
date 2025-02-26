@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useArticulos, useBlogPosts, useSections } from "../../hooks/useData";
 import useLanguage from "../../hooks/useLanguage";
 import Loading from "../Loading";
-import SectionInfo from "../SectionInfo";
 
 export default function Visual() {
-  const [selectedSection, setSelectedSection] = useState("investigacion");
   const { data, isLoading, error } = useSections();
   const {
     data: articulos,
@@ -20,18 +18,14 @@ export default function Visual() {
 
   const { language } = useLanguage();
 
+  const [selectedSection, setSelectedSection] = useState("investigacion");
+
   if (isLoading || isArticulosLoading || isBlogPostsLoading) return <Loading />;
   if (error || articulosError || blogPostsError)
     return <div>Hubo un error :( </div>;
 
-  const escritoData = data.filter((i) => i._type === "escrito")[0];
-
   return (
     <section className="flex w-full flex-col items-center gap-8">
-      <SectionInfo
-        title={escritoData.titulo[language] || escritoData.titulo.es}
-        text={escritoData.descripcion[language] || escritoData.descripcion.es}
-      />
       <h3 className="z-10 text-center font-[Nightingale] text-xl">
         <span
           className={
