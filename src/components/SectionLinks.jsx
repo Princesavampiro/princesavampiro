@@ -10,7 +10,7 @@ export default function SectionLinks() {
   if (!currentSection || !links) return null;
 
   return (
-    <DraggableWindow title={"Links"} className={"h-min"}>
+    <DraggableWindow title={"Links"} className={"h-min min-w-[250px]"}>
       <ul>
         {links.map((link, index) => (
           <li key={link._key} className="text-center">
