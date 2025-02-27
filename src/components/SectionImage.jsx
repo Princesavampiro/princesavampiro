@@ -14,7 +14,7 @@ export default function SectionImage() {
   if (!currentSection || !image) return null;
 
   return (
-    <DraggableWindow className={"h-min w-[350px]"}>
+    <DraggableWindow title="✴" className={"h-min w-[350px]"}>
       <img src={image?.url + size.small} />
     </DraggableWindow>
   );
