@@ -25,22 +25,24 @@ export default function CardGrid({ data, contentType }) {
           style={{ transform: getRandomTranslation() }}
           className={`z-0 flex max-w-[150px] flex-col items-center justify-center rounded-lg hover:z-10`}
         >
-          <div className="hover:brightness-180 hover:invert hover:saturate-200">
-            {!contentType.includes("release")
-              ? item.imagenes && (
-                  <img
-                    className="rounded-sm"
-                    src={item.imagenes[0].url + size.small}
-                  />
-                )
-              : item.artwork && (
-                  <img
-                    className="rounded-sm"
-                    src={item.artwork.url + size.small}
-                  />
-                )}
-          </div>
-          <h3 className="text-center text-sm">{item.titulo}</h3>
+          {(item.imagenes?.[0].url || item.artwork) && (
+            <div className="hover:brightness-180 hover:invert hover:saturate-200">
+              {!contentType.includes("release")
+                ? item.imagenes && (
+                    <img
+                      className="rounded-sm"
+                      src={item.imagenes[0].url + size.small}
+                    />
+                  )
+                : item.artwork && (
+                    <img
+                      className="rounded-sm"
+                      src={item.artwork.url + size.small}
+                    />
+                  )}
+            </div>
+          )}
+          <h3 className="text-center text-sm hover:underline">{item.titulo}</h3>
         </NavLink>
       ))}
     </ul>
