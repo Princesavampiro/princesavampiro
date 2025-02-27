@@ -16,7 +16,7 @@ export default function DraggableWindow({ title, children, className }) {
         onPointerDown={(event) => controls.start(event)}
         className="flex min-h-8 cursor-grab items-center justify-center border-b"
       >
-        {title && title}
+        {title ?? "✴"}
       </div>
       <div className="overflow-y-auto">{children}</div>
     </motion.div>
