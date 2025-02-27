@@ -1,6 +1,6 @@
 import DraggableWindow from "./DraggableWindow";
 
-export default function SectionImage({ image }) {
+export default function SectionImage({ image, alt }) {
   const size = {
     small: "?h=500&fm=webp",
     large: "?h=1080&fm=webp",
@@ -10,7 +10,7 @@ export default function SectionImage({ image }) {
 
   return (
     <DraggableWindow title="✴" className={"h-min w-[350px]"}>
-      <img src={image?.url + size.small} />
+      <img src={image?.url + size.small} alt={alt ?? ""} />
     </DraggableWindow>
   );
 }
