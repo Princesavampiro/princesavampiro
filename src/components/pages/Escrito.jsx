@@ -1,10 +1,22 @@
 import { useState } from "react";
-import { useArticulos, useBlogPosts, useSections } from "../../hooks/useData";
+import {
+  useInvestigacion,
+  useArticulos,
+  useBlogPosts,
+  useSections,
+} from "../../hooks/useData";
 import useLanguage from "../../hooks/useLanguage";
 import Loading from "../Loading";
+import { PortableText } from "@portabletext/react";
+import { components } from "../PortableText/PortableTextComponents";
 
-export default function Visual() {
+export default function Escrito() {
   const { data, isLoading, error } = useSections();
+  const {
+    data: investigacion,
+    isLoading: isInvestigacionLoading,
+    error: investigacionError,
+  } = useInvestigacion();
   const {
     data: articulos,
     isLoading: isArticulosLoading,
@@ -20,8 +32,14 @@ export default function Visual() {
 
   const [selectedSection, setSelectedSection] = useState("investigacion");
 
-  if (isLoading || isArticulosLoading || isBlogPostsLoading) return <Loading />;
-  if (error || articulosError || blogPostsError)
+  if (
+    isLoading ||
+    isInvestigacionLoading ||
+    isArticulosLoading ||
+    isBlogPostsLoading
+  )
+    return <Loading />;
+  if (error || investigacionError || articulosError || blogPostsError)
     return <div>Hubo un error :( </div>;
 
   return (
@@ -33,9 +51,11 @@ export default function Visual() {
           }
           onClick={() => setSelectedSection("investigacion")}
         >
-          Investigación
+          {investigacion[0].titulo
+            ? investigacion[0].titulo[language] || investigacion[0].titulo.es
+            : "Investigación"}
         </span>
-        /{" "}
+        {" / "}
         <span
           className={
             selectedSection === "blog" ? "underline" : "cursor-pointer"
@@ -47,18 +67,59 @@ export default function Visual() {
       </h3>
       {selectedSection === "investigacion" && (
         <div className="flex w-full flex-col items-center gap-8">
+          {investigacion[0].texto && (
+            <div className="flex flex-col items-center gap-2">
+              <PortableText
+                components={components}
+                value={
+                  investigacion[0].texto?.[language] ||
+                  investigacion[0].texto?.es
+                }
+              />
+            </div>
+          )}
           {articulos &&
-            articulos.map((articulo) => (
-              <div key={articulo._id}>{articulo.titulo.es}</div>
+            articulos.map((articulo, index) => (
+              <Entry
+                key={articulo._id}
+                arr={articulos}
+                entry={articulo}
+                index={index}
+              />
             ))}
         </div>
       )}
       {selectedSection === "blog" && (
         <div className="flex w-full flex-col items-center gap-8">
           {blogPosts &&
-            blogPosts.map((post) => <div key={post._id}>{post.titulo.es}</div>)}
+            blogPosts.map((post, index) => (
+              <Entry
+                key={post._id}
+                arr={blogPosts}
+                entry={post}
+                index={index}
+              />
+            ))}
         </div>
       )}
     </section>
+  );
+}
+
+export function Entry({ arr, entry, index }) {
+  const { language } = useLanguage();
+
+  return (
+    <div className="flex flex-col items-start gap-2">
+      <div className="text-xs">{entry.fecha}</div>
+      <h4 className="mb-2 text-xl underline">{entry.titulo.es}</h4>
+      <div className="flex flex-col items-center gap-2">
+        <PortableText
+          components={components}
+          value={entry.texto[language] || entry.texto.es}
+        />
+      </div>
+      {index !== arr.length - 1 && <div className="mx-auto mt-4">✴</div>}
+    </div>
   );
 }
