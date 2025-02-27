@@ -5,6 +5,8 @@ export default function Player() {
   const { data } = useConfig();
   const controls = useDragControls();
 
+  console.log(data);
+
   return (
     <motion.div
       drag
@@ -17,8 +19,9 @@ export default function Player() {
       {data[0].audio && (
         <audio
           controls
-          src={data[0].audio.archivo?.asset.url || data[0].audio.url}
+          src={data[0].audio.archivo?.url || data[0].audio.url}
           className="rounded-full"
+          loop
         />
       )}
       <div
