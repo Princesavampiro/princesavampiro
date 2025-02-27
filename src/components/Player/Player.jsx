@@ -5,8 +5,6 @@ export default function Player() {
   const { data } = useConfig();
   const controls = useDragControls();
 
-  console.log(data);
-
   return (
     <motion.div
       drag
