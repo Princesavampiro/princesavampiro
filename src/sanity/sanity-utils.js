@@ -188,6 +188,42 @@ export async function getItem(slug) {
       _id,
       titulo,
       slug,
+      fecha,
+      lugar,
+      texto,
+      imagenes[]{
+        _key,
+        'url': asset->url,
+        'dimensions': asset->metadata.dimensions,
+      },
+      obras[]{
+        titulo,
+        fecha,
+        medidas,
+        materiales,
+        descripcion,
+        imagen {
+          'url': asset->url,
+          'dimensions': asset->metadata.dimensions,
+        },
+      },
+      links[]{
+        _key,
+        url,
+        titulo
+      },
+      sello,
+      artwork {
+        'url': asset->url,
+        'dimensions': asset->metadata.dimensions,
+      },
+      tipoDeRelease->{
+        _id,
+        tipoDeRelease
+      },
+      embed,
+      emdedAudio,
+      embedVideo,
     }`,
     { slug },
   );
