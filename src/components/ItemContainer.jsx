@@ -20,7 +20,7 @@ export default function ItemContainer() {
   if (error) return <div>Hubo un error :(</div>;
 
   return (
-    <section className="fixed flex h-screen w-screen flex-col items-center justify-center gap-4 overflow-scroll bg-[#0000022] backdrop-blur-sm">
+    <section className="fixed inset-0 flex h-screen w-screen flex-col items-center gap-4 overflow-scroll bg-[#0000022] backdrop-blur-sm">
       <h1>{data[0].titulo}</h1>
       <p>{data[0].fecha}</p>
       {data[0].sello && <p>{data[0].sello}</p>}
