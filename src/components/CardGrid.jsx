@@ -43,6 +43,8 @@ export default function CardGrid({ data, contentType }) {
             </div>
           )}
           <h3 className="text-center text-sm hover:underline">{item.titulo}</h3>
+          {item.lugar && <p className="text-xs">{item.lugar}</p>}
+          {item.sello && <p className="text-xs">{item.sello}</p>}
         </NavLink>
       ))}
     </ul>
