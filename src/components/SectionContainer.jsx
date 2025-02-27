@@ -28,11 +28,7 @@ export default function SectionContainer() {
   const sectionTitle =
     currentSection?.titulo[language] || currentSection?.titulo.es;
 
-  const text =
-    currentSection?.texto?.[language] ??
-    currentSection?.bio?.[language] ??
-    currentSection?.descripcion?.[language] ??
-    null;
+  const text = currentSection?.texto?.[language] || currentSection?.texto.es;
 
   const contentTitle =
     currentSection?._type === "quienSoy"
