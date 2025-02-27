@@ -11,6 +11,7 @@ import SectionTitle from "./components/SectionTitle";
 import HomeButton from "./components/HomeButton";
 import SectionLinks from "./components/SectionLinks";
 import SectionImage from "./components/SectionImage";
+import ItemContainer from "./components/ItemContainer";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -55,6 +56,7 @@ function App() {
           <SectionImage />
         </div>
       )}
+      {location.pathname.split("/").length > 2 && <ItemContainer />}
       {location.pathname !== "/" && <HomeButton />}
       <LanguageButton />
       <Player />
