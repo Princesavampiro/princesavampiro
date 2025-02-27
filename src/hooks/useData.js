@@ -71,9 +71,9 @@ export function useBlogPosts() {
   });
 }
 
-export function useRelease(slug) {
+export function useItem(slug) {
   return useQuery({
-    queryKey: ["release", slug],
-    queryFn: () => sanityUtils.getRelease(slug),
+    queryKey: ["item", slug],
+    queryFn: () => sanityUtils.getItem(slug),
   });
 }

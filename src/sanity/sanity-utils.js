@@ -181,6 +181,18 @@ export async function getBlogPosts() {
   );
 }
 
+export async function getItem(slug) {
+  return client.fetch(
+    `*[_type in ['release', 'live', 'exposicion'] && slug.current == $slug]{
+      _type,
+      _id,
+      titulo,
+      slug,
+    }`,
+    { slug },
+  );
+}
+
 export async function getRelease(slug) {
   return client.fetch(
     `*[_type == 'release' && slug.current == $slug]{
