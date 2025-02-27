@@ -52,7 +52,7 @@ export default function ItemContainer() {
               className="w-[200px]"
             />
           )}
-          <h2>{obra.titulo}</h2>
+          {obra.titulo && <h2>{obra.titulo}</h2>}
           {obra.fecha && <p>{obra.fecha}</p>}
           {obra.medidas && <p>{obra.medidas}</p>}
           {obra.materiales && <p>{obra.materiales?.[language]}</p>}
