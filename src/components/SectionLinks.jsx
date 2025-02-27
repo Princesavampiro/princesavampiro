@@ -5,7 +5,7 @@ export default function SectionLinks({ links }) {
 
   return (
     <DraggableWindow title={"Links"} className={"h-min min-w-[250px]"}>
-      <ul>
+      <ul className="p-4">
         {links.map((link) => (
           <li key={link._key} className="text-center">
             <a
