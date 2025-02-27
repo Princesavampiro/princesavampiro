@@ -5,12 +5,7 @@ import LanguageButton from "./components/LanguageButton";
 import LoadingScreen from "./components/LoadingScreen";
 import StarBackground from "./components/StarBackground";
 import Player from "./components/Player/Player";
-import SectionInfo from "./components/SectionInfo";
-import SectionContent from "./components/SectionContent";
-import SectionTitle from "./components/SectionTitle";
-import HomeButton from "./components/HomeButton";
-import SectionLinks from "./components/SectionLinks";
-import SectionImage from "./components/SectionImage";
+import SectionContainer from "./components/SectionContainer";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -37,25 +32,7 @@ function App() {
 
       <Menu sections={data} />
 
-      {location.pathname !== "/" && (
-        <div className="grid h-full min-h-screen grid-cols-2 place-items-center gap-8 p-16">
-          {location.pathname === "/visceral" && (
-            <SectionTitle title="Visceral" />
-          )}
-          <SectionInfo
-            title={
-              configData[0]?.tituloDelSitio.replace(" ", "_") +
-              "/" +
-              location.pathname.split("/")[1]
-            }
-          />
-
-          <SectionContent />
-          <SectionLinks />
-          <SectionImage />
-        </div>
-      )}
-      {location.pathname !== "/" && <HomeButton />}
+      {location.pathname !== "/" && <SectionContainer />}
       <LanguageButton />
       <Player />
     </main>

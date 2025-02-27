@@ -1,17 +1,12 @@
-import { useCurrentSection } from "../hooks/useCurrentSection";
 import DraggableWindow from "./DraggableWindow";
 
-export default function SectionImage() {
-  const { currentSection, error, isLoading } = useCurrentSection();
-  const image = currentSection?.imagen;
+export default function SectionImage({ image }) {
   const size = {
     small: "?h=500&fm=webp",
     large: "?h=1080&fm=webp",
   };
 
-  if (isLoading) return null;
-  if (error) return <div>Hubo un error :( </div>;
-  if (!currentSection || !image) return null;
+  if (!image) return null;
 
   return (
     <DraggableWindow title="✴" className={"h-min w-[350px]"}>
