@@ -29,4 +29,15 @@ export const components = {
       </h3>
     ),
   },
+  marks: {
+    link: ({ children, value }) => (
+      <a
+        href={value.href}
+        target="_blank"
+        className="animate-pulse hover:animate-none hover:underline"
+      >
+        {children}
+      </a>
+    ),
+  },
 };
