@@ -11,7 +11,10 @@ export default function SectionInfo({
   if (!windowTitle && !sectionTitle && !text) return null;
 
   return (
-    <DraggableWindow title={windowTitle} className={"max-h-[40vh] max-w-prose"}>
+    <DraggableWindow
+      title={windowTitle}
+      className={"fixed top-1/8 left-16 max-h-[40vh] max-w-prose"}
+    >
       <div className="p-4">
         {sectionTitle && (
           <h1 className="py-4 font-[Nightingale] text-2xl">{sectionTitle}</h1>

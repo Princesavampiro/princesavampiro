@@ -52,7 +52,7 @@ export default function SectionContainer() {
   if (error || configError || !currentSection) return null;
 
   return (
-    <div className="grid h-full min-h-screen grid-cols-2 place-items-center gap-8 p-16">
+    <div className="h-full min-h-screen overflow-hidden">
       {location.pathname === "/visceral" && <SectionTitle title="Visceral" />}
 
       <SectionInfo

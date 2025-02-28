@@ -6,7 +6,7 @@ export default function SectionTitle({ title }) {
       drag
       whileDrag={{ scale: 0.9 }}
       dragMomentum={false}
-      className="almendra fixed w-max cursor-grab text-9xl uppercase"
+      className="almendra fixed top-1/3 right-1/8 w-max cursor-grab text-9xl uppercase"
     >
       {title}
     </motion.div>
