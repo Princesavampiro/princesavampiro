@@ -34,7 +34,7 @@ export default function ItemContainer() {
   };
 
   return (
-    <section className="fixed inset-0 grid h-screen w-screen grid-cols-2 place-items-center gap-8 overflow-scroll bg-[#0000022] p-16 backdrop-blur-sm">
+    <section className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#0000022] backdrop-blur-sm">
       <SectionInfo
         sectionTitle={data[0].titulo}
         details={details}
@@ -42,8 +42,8 @@ export default function ItemContainer() {
       />
 
       {data[0].imagenes && (
-        <DraggableWindow className="h-min">
-          <div className="flex w-full items-center gap-2 overflow-x-auto p-2">
+        <DraggableWindow className="fixed top-1/4 left-1/2 h-min">
+          <div className="flex w-2/3 items-center gap-2 overflow-x-auto p-2">
             {data[0].imagenes?.map((imagen) => (
               <img
                 key={imagen._key}
@@ -57,7 +57,7 @@ export default function ItemContainer() {
       )}
 
       {data[0].obras && (
-        <DraggableWindow className="col-span-2">
+        <DraggableWindow className="fixed bottom-1/8 left-1/4 max-h-[40vh] w-2/3">
           <div className="grid grid-cols-2 gap-8 p-8">
             {data[0].obras?.map((obra) => (
               <div key={obra.titulo}>
@@ -98,12 +98,14 @@ export default function ItemContainer() {
         <SectionImage image={data[0].artwork} alt={data[0].titulo} />
       )}
 
-      <NavLink
-        to={location.pathname.split("/")[1]}
-        className="fixed bottom-16 mx-auto rounded-[50%] bg-white px-2 py-1 text-sm text-black"
-      >
-        {language === "es" ? "CERRAR" : "CLOSE"}
-      </NavLink>
+      <div className="pointer-events-none fixed bottom-16 left-0 flex w-full items-center justify-center">
+        <NavLink
+          to={location.pathname.split("/")[1]}
+          className="pointer-events-auto rounded-[50%] bg-white px-2 py-1 text-sm text-black"
+        >
+          {language === "es" ? "CERRAR" : "CLOSE"}
+        </NavLink>
+      </div>
     </section>
   );
 }
