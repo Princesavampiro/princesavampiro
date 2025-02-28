@@ -18,7 +18,12 @@ export default function ItemContainer() {
     large: "?h=1080&fm=webp",
   };
 
-  if (isLoading) return <Loading />;
+  if (isLoading)
+    return (
+      <div className="fixed inset-0 grid place-items-center backdrop-blur-sm">
+        <Loading />
+      </div>
+    );
   if (error) return <div>Hubo un error :(</div>;
 
   const details = {
