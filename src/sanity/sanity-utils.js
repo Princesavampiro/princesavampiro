@@ -20,7 +20,22 @@ export async function getSections() {
       _id,
       slug,
       titulo,
-      texto,
+      texto{
+        es[]{
+        ...,
+        _type == "image" => {
+            ...,
+            'url': asset->url,
+          }
+        },
+        en[]{
+        ...,
+        _type == "image" => {
+            ...,
+            'url': asset->url,
+          }
+        },
+      },
       _type,
       links,
       icono {
@@ -153,7 +168,22 @@ export async function getInvestigacion() {
       _id,
       titulo,
       slug,
-      texto,
+      texto{
+        es[]{
+        ...,
+        _type == "image" => {
+            ...,
+            'url': asset->url,
+          }
+        },
+        en[]{
+        ...,
+        _type == "image" => {
+            ...,
+            'url': asset->url,
+          }
+        },
+      },
     }`,
   );
 }
@@ -164,7 +194,22 @@ export async function getArticulo() {
       _id,
       titulo,
       fecha,
-      texto,
+      texto{
+        es[]{
+        ...,
+        _type == "image" => {
+            ...,
+            'url': asset->url,
+          }
+        },
+        en[]{
+        ...,
+        _type == "image" => {
+            ...,
+            'url': asset->url,
+          }
+        },
+      },
     }`,
   );
 }
@@ -176,7 +221,22 @@ export async function getBlogPosts() {
       titulo,
       slug,
       fecha,
-      texto,
+      texto{
+        es[]{
+        ...,
+        _type == "image" => {
+            ...,
+            'url': asset->url,
+          }
+        },
+        en[]{
+        ...,
+        _type == "image" => {
+            ...,
+            'url': asset->url,
+          }
+        },
+      },
     }`,
   );
 }
