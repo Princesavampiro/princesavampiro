@@ -1,6 +1,8 @@
 import DraggableWindow from "./DraggableWindow";
+import useLanguage from "../hooks/useLanguage";
 
 export default function SectionLinks({ links }) {
+  const { language } = useLanguage();
   if (!links) return null;
 
   return (
@@ -17,7 +19,12 @@ export default function SectionLinks({ links }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {link.titulo}
+              {link.comentario && (
+                <span className="pr-2">
+                  {link.comentario?.[language] || link.comentario?.es}
+                </span>
+              )}
+              <span>{link.titulo}</span>
             </a>
           </li>
         ))}
