@@ -80,7 +80,7 @@ export async function getQuienSoy() {
 
 export async function getReleases() {
   return client.fetch(
-    `*[_type == 'release']{
+    `*[_type == 'release'] | order(fecha desc){
       _id,
       titulo,
       slug,
@@ -109,7 +109,7 @@ export async function getTiposDeReleases() {
 
 export async function getLives() {
   return client.fetch(
-    `*[_type == 'live']{
+    `*[_type == 'live'] | order(fecha desc){
       _id,
       slug,
       titulo,
@@ -132,7 +132,7 @@ export async function getLives() {
 
 export async function getExposiciones() {
   return client.fetch(
-    `*[_type == 'exposicion']{
+    `*[_type == 'exposicion'] | order(fecha desc){
       _id,
       titulo,
       slug,
@@ -190,7 +190,7 @@ export async function getInvestigacion() {
 
 export async function getArticulo() {
   return client.fetch(
-    `*[_type == "articulo"]{
+    `*[_type == "articulo"] | order(fecha desc){
       _id,
       titulo,
       fecha,
@@ -216,7 +216,7 @@ export async function getArticulo() {
 
 export async function getBlogPosts() {
   return client.fetch(
-    `*[_type == "blogPost"]{
+    `*[_type == "blogPost"] | order(fecha desc){
       _id,
       titulo,
       slug,
