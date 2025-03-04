@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 import useLanguage from "../hooks/useLanguage";
-import { useConfig } from "../hooks/useData";
+import { useConfig, useQuienSoy } from "../hooks/useData";
 import { useCurrentSection } from "../hooks/useCurrentSection";
 import SectionInfo from "../components/SectionInfo";
 import SectionContent from "../components/SectionContent";
@@ -17,6 +17,11 @@ import Loading from "./Loading";
 export default function SectionContainer() {
   const location = useLocation();
   const { currentSection, error, isLoading } = useCurrentSection();
+  const {
+    data: quienSoy,
+    isLoading: isQuienSoyLoading,
+    error: quienSoyError,
+  } = useQuienSoy();
   const { language } = useLanguage();
 
   const {
@@ -48,8 +53,8 @@ export default function SectionContainer() {
       <QuienSoy />
     ) : null;
 
-  if (isLoading || isConfigLoading) return <Loading />;
-  if (error || configError || !currentSection) return null;
+  if (isLoading || isConfigLoading || isQuienSoyLoading) return <Loading />;
+  if (error || configError || !currentSection || quienSoyError) return null;
 
   return (
     <div className="h-full min-h-screen overflow-hidden">
@@ -65,9 +70,16 @@ export default function SectionContainer() {
         text={text}
       />
 
-      {currentSection && currentSection._type !== "visceral" && (
-        <SectionContent windowTitle={contentTitle}>{content}</SectionContent>
-      )}
+      {currentSection &&
+        currentSection._type !== "visceral" &&
+        currentSection._type !== "quienSoy" && (
+          <SectionContent windowTitle={contentTitle}>{content}</SectionContent>
+        )}
+      {currentSection &&
+        currentSection._type === "quienSoy" &&
+        quienSoy?.comentarios?.length > 0 && (
+          <SectionContent windowTitle={contentTitle}>{content}</SectionContent>
+        )}
       <SectionLinks links={currentSection.links} />
       <SectionImage image={currentSection.imagen} />
       <HomeButton />
