@@ -54,7 +54,7 @@ export default function ItemContainer() {
                 <img
                   src={imagen.url + size.small}
                   alt={data[0].titulo}
-                  className="mx-auto w-[170px] rounded-sm"
+                  className="mx-auto w-[170px] cursor-zoom-in rounded-sm"
                   onClick={() => {
                     setLightboxImage(imagen);
                     setLightboxOpen(true);
@@ -78,7 +78,7 @@ export default function ItemContainer() {
                   <img
                     src={obra.imagen?.url + size.small}
                     alt={obra.titulo}
-                    className="w-full rounded-sm"
+                    className="w-full cursor-zoom-in rounded-sm"
                     onClick={() => {
                       setLightboxImage(obra.imagen);
                       setLightboxOpen(true);
