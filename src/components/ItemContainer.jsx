@@ -35,7 +35,7 @@ export default function ItemContainer() {
   };
 
   return (
-    <section className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#0000022] backdrop-blur-sm">
+    <section className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#00000044] backdrop-blur-xl">
       <SectionInfo
         sectionTitle={data[0].titulo}
         details={details}
@@ -44,14 +44,14 @@ export default function ItemContainer() {
       />
 
       {data[0].imagenes && (
-        <DraggableWindow className="fixed top-1/4 left-1/2 h-min">
-          <div className="flex w-2/3 items-center gap-2 overflow-x-auto p-2">
+        <DraggableWindow className="h-min w-max max-w-1/3 sm:fixed sm:top-1/4 sm:right-1/8">
+          <div className="flex w-full items-center gap-2 overflow-x-auto p-2">
             {data[0].imagenes?.map((imagen) => (
               <img
                 key={imagen._key}
                 src={imagen.url + size.small}
                 alt={data[0].titulo}
-                className="mx-auto w-[100px] rounded-sm"
+                className="mx-auto w-[170px] rounded-sm"
               />
             ))}
           </div>
@@ -59,22 +59,25 @@ export default function ItemContainer() {
       )}
 
       {data[0].obras && (
-        <DraggableWindow className="fixed bottom-1/8 left-1/4 max-h-[40vh] w-2/3">
-          <div className="grid grid-cols-2 gap-8 p-8">
+        <DraggableWindow className="max-h-[50vh] w-1/3 sm:fixed sm:bottom-1/8 sm:left-1/4">
+          <div className="columns-3xs gap-8 p-8 pb-0">
             {data[0].obras?.map((obra) => (
-              <div key={obra.titulo}>
+              <div
+                key={obra.titulo}
+                className="flex break-inside-avoid flex-col gap-2 pb-8"
+              >
                 {obra.imagen.url ? (
                   <img
                     src={obra.imagen?.url + size.small}
                     alt={obra.titulo}
-                    className="w-[200px] rounded-sm"
+                    className="w-full rounded-sm"
                   />
                 ) : (
-                  <div className="h-[100px] w-full rounded-sm border bg-black opacity-30" />
+                  <div className="h-[100px] w-full rounded-sm border border-white/50 bg-black opacity-30" />
                 )}
                 <div className="text-sm">
                   {obra.titulo && (
-                    <h2 className="py-2 font-[Nightningale] text-xl">
+                    <h2 className="py-2 font-[Nightingale] text-xl">
                       {obra.titulo}
                     </h2>
                   )}
@@ -83,10 +86,7 @@ export default function ItemContainer() {
                   {obra.materiales && <p>{obra.materiales?.[language]}</p>}
                 </div>
                 {obra.descripcion && (
-                  <p>
-                    descripcion de la obra:{" "}
-                    {obra.descripcion?.[language] || obra.descripcion?.es}
-                  </p>
+                  <p>{obra.descripcion?.[language] || obra.descripcion?.es}</p>
                 )}
               </div>
             ))}
