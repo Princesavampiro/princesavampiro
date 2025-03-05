@@ -3,11 +3,24 @@ import { useConfig } from "../../hooks/useData";
 import EmbedRenderer from "../EmbedRenderer";
 import DraggableWindow from "../DraggableWindow";
 import usePlayer from "../../hooks/usePlayer";
+import useLanguage from "../../hooks/useLanguage";
 
 export default function Player() {
   const { data } = useConfig();
   const { currentEmbed, setCurrentEmbed } = usePlayer();
   const [isExpanded, setIsExpanded] = useState(true);
+  const { language } = useLanguage();
+
+  const fields = {
+    show: {
+      es: "mostrar",
+      en: "show",
+    },
+    hide: {
+      es: "esconder",
+      en: "hide",
+    },
+  };
 
   useEffect(() => {
     setCurrentEmbed(data[0].releaseDestacado?.embed || null);
@@ -34,7 +47,7 @@ export default function Player() {
           }
         >
           <div className="text-center">
-            {isExpanded ? "minimizar" : "maximizar"}
+            {isExpanded ? fields.hide[language] : fields.show[language]}
           </div>
         </div>
       </DraggableWindow>
