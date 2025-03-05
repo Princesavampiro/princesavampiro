@@ -11,7 +11,7 @@ export default function ActionBar() {
   };
 
   return (
-    <div className="fixed bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center gap-4 rounded-full border border-white/30 bg-black/5 p-3 text-4xl backdrop-blur-md">
+    <div className="fixed bottom-4 left-1/2 z-100 flex -translate-x-1/2 items-center justify-center gap-4 rounded-full border border-white/30 bg-black/5 p-3 text-4xl backdrop-blur-md">
       <NavLink
         onClick={handleBack}
         aria-label="Back"
