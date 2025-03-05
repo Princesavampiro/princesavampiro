@@ -48,6 +48,7 @@ export async function getSections() {
         'url': asset->url,
       },
       embed,
+      contacto
     }`,
   );
 }

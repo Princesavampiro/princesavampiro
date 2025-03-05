@@ -8,6 +8,7 @@ export default function SectionInfo({
   details,
   text,
   className,
+  contact,
 }) {
   if (!windowTitle && !sectionTitle && !text) return null;
 
@@ -33,6 +34,17 @@ export default function SectionInfo({
         {text && (
           <div className="flex flex-col gap-4">
             <PortableText components={components} value={text} />
+          </div>
+        )}
+        {contact.email && (
+          <div className="flex gap-2 py-4">
+            {contact?.message && <p>{contact.message}: </p>}
+            <a
+              href={`mailto:${contact.email}`}
+              className="animate-pulse hover:animate-none hover:underline"
+            >
+              {contact.email}
+            </a>
           </div>
         )}
       </div>

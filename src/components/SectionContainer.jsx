@@ -36,6 +36,13 @@ export default function SectionContainer() {
 
   const text = currentSection?.texto?.[language] || currentSection?.texto?.es;
 
+  const contact = {
+    email: currentSection?.contacto?.email,
+    message:
+      currentSection?.contacto?.mensaje?.[language] ||
+      currentSection?.contacto?.mensaje?.es,
+  };
+
   const contentTitle =
     currentSection?._type === "quienSoy"
       ? language === "es"
@@ -75,6 +82,7 @@ export default function SectionContainer() {
           }
           sectionTitle={sectionTitle}
           text={text}
+          contact={contact}
           className={`sm:fixed sm:top-1/8 sm:left-16`}
         />
       )}
