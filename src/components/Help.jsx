@@ -7,7 +7,7 @@ export default function Help() {
   return (
     <motion.div
       drag
-      className="fixed right-8 bottom-8 animate-pulse cursor-grab text-sm select-none hover:animate-none active:cursor-grabbing"
+      className="fixed top-8 right-24 animate-pulse cursor-grab text-sm select-none hover:animate-none active:cursor-grabbing"
     >
       {language === "es"
         ? "arrastra estrellas ✴ para mover cosas"

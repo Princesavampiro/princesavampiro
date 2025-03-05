@@ -17,7 +17,7 @@ export default function DraggableWindow({ title, children, className }) {
       {!isMobile && (
         <div
           onPointerDown={(event) => controls.start(event)}
-          className="flex min-h-8 cursor-grab items-center justify-center border-b active:cursor-grabbing"
+          className="flex min-h-8 cursor-grab items-center justify-center border-b border-white/30 active:cursor-grabbing"
         >
           {title ?? "✴"}
         </div>
