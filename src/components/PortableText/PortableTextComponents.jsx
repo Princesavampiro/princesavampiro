@@ -1,10 +1,8 @@
-import parse from "html-react-parser";
+import EmbedRenderer from "../EmbedRenderer";
 
 export const components = {
   types: {
-    embed: (props) => (
-      <div className="mx-auto my-4">{parse(props.value.html)}</div>
-    ),
+    embed: (props) => <EmbedRenderer value={props.value.html} />,
     image: (props) => (
       <img className="mx-auto my-16 w-full max-w-4xl" src={props.value.url} />
     ),
