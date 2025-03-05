@@ -9,6 +9,7 @@ import SectionContainer from "./components/SectionContainer";
 import ItemContainer from "./components/ItemContainer";
 import ActionBar from "./components/ActionBar";
 import Help from "./components/Help";
+import useIsMobile from "./hooks/useIsMobile";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -19,6 +20,7 @@ function App() {
   } = useConfig();
 
   const location = useLocation();
+  const isMobile = useIsMobile();
 
   if (isLoading || isConfigLoading) return <LoadingScreen />;
   if (error || configError) return <div>Hubo un error :( </div>;
@@ -39,9 +41,9 @@ function App() {
       {location.pathname.split("/").length > 2 && <ItemContainer />}
 
       <LanguageButton />
-      <Player />
+      {!isMobile && <Player />}
       {location.pathname !== "/" && <ActionBar />}
-      {location.pathname === "/" && <Help />}
+      {location.pathname === "/" && !isMobile && <Help />}
     </main>
   );
 }
