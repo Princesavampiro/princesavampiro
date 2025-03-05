@@ -15,6 +15,7 @@ import QuienSoy from "./pages/QuienSoy";
 import Loading from "./Loading";
 import LoadToPlayerButton from "./LoadToPlayerButton";
 import useIsMobile from "../hooks/useIsMobile";
+import WebCredits from "./WebCredits";
 
 export default function SectionContainer() {
   const location = useLocation();
@@ -116,6 +117,8 @@ export default function SectionContainer() {
             {content}
           </SectionContent>
         )}
+
+      {currentSection && currentSection._type === "quienSoy" && <WebCredits />}
       <SectionLinks
         links={currentSection.links}
         className={`sm:fixed sm:right-1/8 sm:bottom-1/16`}
