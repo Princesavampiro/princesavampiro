@@ -71,7 +71,7 @@ export default function Sonoro() {
           }
           onClick={() => setSelectedSection("lives")}
         >
-          Lives
+          Performances
         </span>
       </h3>
       {selectedSection === "releases" && (
