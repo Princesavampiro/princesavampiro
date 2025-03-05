@@ -15,7 +15,7 @@ export default function SectionInfo({
   return (
     <DraggableWindow
       title={windowTitle}
-      className={`h-max max-h-[40vh] max-w-prose ${className}`}
+      className={`h-max max-w-prose sm:max-h-[40vh] ${className}`}
     >
       <div className="p-4">
         {sectionTitle && (
