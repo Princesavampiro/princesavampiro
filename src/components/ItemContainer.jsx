@@ -40,6 +40,7 @@ export default function ItemContainer() {
         sectionTitle={data[0].titulo}
         details={details}
         text={data[0].texto[language]}
+        className={`sm:fixed sm:top-1/8 sm:left-1/8`}
       />
 
       {data[0].imagenes && (
@@ -93,10 +94,19 @@ export default function ItemContainer() {
         </DraggableWindow>
       )}
 
-      {data[0].links && <SectionLinks links={data[0].links} />}
+      {data[0].links && (
+        <SectionLinks
+          links={data[0].links}
+          className={`sm:fixed sm:right-1/6 sm:bottom-1/16`}
+        />
+      )}
 
       {data[0].artwork && (
-        <SectionImage image={data[0].artwork} alt={data[0].titulo} />
+        <SectionImage
+          image={data[0].artwork}
+          alt={data[0].titulo}
+          className={`sm:fixed sm:bottom-32 sm:left-1/3`}
+        />
       )}
 
       {data[0].embed && (
@@ -105,15 +115,6 @@ export default function ItemContainer() {
           className="max-w-content fixed bottom-1/8 left-1/4 h-max"
         />
       )}
-
-      <div className="pointer-events-none fixed bottom-16 left-0 flex w-full items-center justify-center">
-        <NavLink
-          to={location.pathname.split("/")[1]}
-          className="pointer-events-auto rounded-[50%] bg-white px-2 py-1 text-sm text-black"
-        >
-          {language === "es" ? "CERRAR" : "CLOSE"}
-        </NavLink>
-      </div>
     </section>
   );
 }

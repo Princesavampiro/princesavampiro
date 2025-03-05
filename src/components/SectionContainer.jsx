@@ -59,7 +59,12 @@ export default function SectionContainer() {
 
   return (
     <div className="h-full min-h-screen overflow-hidden">
-      {location.pathname === "/visceral" && <SectionTitle title="Visceral" />}
+      {location.pathname === "/visceral" && (
+        <SectionTitle
+          title="Visceral"
+          className={`sm:fixed sm:top-1/3 sm:right-1/8`}
+        />
+      )}
 
       {currentSection.texto && (
         <SectionInfo
@@ -70,6 +75,7 @@ export default function SectionContainer() {
           }
           sectionTitle={sectionTitle}
           text={text}
+          className={`sm:fixed sm:top-1/8 sm:left-16`}
         />
       )}
 
@@ -83,16 +89,31 @@ export default function SectionContainer() {
       {currentSection &&
         currentSection._type !== "visceral" &&
         currentSection._type !== "quienSoy" && (
-          <SectionContent windowTitle={contentTitle}>{content}</SectionContent>
+          <SectionContent
+            windowTitle={contentTitle}
+            className={`sm:fixed sm:top-1/5 sm:right-16`}
+          >
+            {content}
+          </SectionContent>
         )}
       {currentSection &&
         currentSection._type === "quienSoy" &&
         quienSoy?.comentarios?.length > 0 && (
-          <SectionContent windowTitle={contentTitle}>{content}</SectionContent>
+          <SectionContent
+            windowTitle={contentTitle}
+            className={`sm:fixed sm:top-1/5 sm:right-16`}
+          >
+            {content}
+          </SectionContent>
         )}
-      <SectionLinks links={currentSection.links} />
-      <SectionImage image={currentSection.imagen} />
-      <HomeButton />
+      <SectionLinks
+        links={currentSection.links}
+        className={`sm:fixed sm:right-1/8 sm:bottom-1/16`}
+      />
+      <SectionImage
+        image={currentSection.imagen}
+        className={`sm:fixed sm:bottom-32 sm:left-1/3`}
+      />
     </div>
   );
 }

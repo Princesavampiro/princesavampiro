@@ -7,13 +7,14 @@ export default function SectionInfo({
   sectionTitle,
   details,
   text,
+  className,
 }) {
   if (!windowTitle && !sectionTitle && !text) return null;
 
   return (
     <DraggableWindow
       title={windowTitle}
-      className={"fixed top-1/8 left-16 max-h-[40vh] max-w-prose"}
+      className={`h-max max-h-[40vh] max-w-prose ${className}`}
     >
       <div className="p-4">
         {sectionTitle && (

@@ -1,14 +1,14 @@
 import DraggableWindow from "./DraggableWindow";
 import useLanguage from "../hooks/useLanguage";
 
-export default function SectionLinks({ links }) {
+export default function SectionLinks({ links, className }) {
   const { language } = useLanguage();
   if (!links) return null;
 
   return (
     <DraggableWindow
       title={"Links"}
-      className={"fixed right-1/8 bottom-1/16 h-min min-w-[250px]"}
+      className={`h-min min-w-[250px] ${className}`}
     >
       <ul className="p-4">
         {links.map((link) => (
