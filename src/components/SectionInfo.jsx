@@ -36,9 +36,9 @@ export default function SectionInfo({
             <PortableText components={components} value={text} />
           </div>
         )}
-        {contact.email && (
+        {contact?.email && (
           <div className="flex gap-2 py-4">
-            {contact?.message && <p>{contact.message}: </p>}
+            {contact?.message && <p>{contact?.message}: </p>}
             <a
               href={`mailto:${contact.email}`}
               className="animate-pulse hover:animate-none hover:underline"
