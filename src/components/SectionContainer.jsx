@@ -34,7 +34,7 @@ export default function SectionContainer() {
   const sectionTitle =
     currentSection?.titulo[language] || currentSection?.titulo.es;
 
-  const text = currentSection?.texto?.[language] || currentSection?.texto.es;
+  const text = currentSection?.texto?.[language] || currentSection?.texto?.es;
 
   const contentTitle =
     currentSection?._type === "quienSoy"
@@ -61,15 +61,17 @@ export default function SectionContainer() {
     <div className="h-full min-h-screen overflow-hidden">
       {location.pathname === "/visceral" && <SectionTitle title="Visceral" />}
 
-      <SectionInfo
-        windowTitle={
-          configData[0]?.tituloDelSitio.replace(" ", "_") +
-          "/" +
-          location.pathname.split("/")[1]
-        }
-        sectionTitle={sectionTitle}
-        text={text}
-      />
+      {currentSection.texto && (
+        <SectionInfo
+          windowTitle={
+            configData[0]?.tituloDelSitio.replace(" ", "_") +
+            "/" +
+            location.pathname.split("/")[1]
+          }
+          sectionTitle={sectionTitle}
+          text={text}
+        />
+      )}
 
       {currentSection && currentSection.embed && (
         <LoadToPlayerButton
