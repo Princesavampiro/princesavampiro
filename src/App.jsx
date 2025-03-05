@@ -7,6 +7,7 @@ import StarBackground from "./components/StarBackground";
 import Player from "./components/Player/Player";
 import SectionContainer from "./components/SectionContainer";
 import ItemContainer from "./components/ItemContainer";
+import ActionBar from "./components/ActionBar";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -26,7 +27,7 @@ function App() {
       <StarBackground />
 
       <div className="fixed inset-0 animate-pulse">
-        <h1 className="-rotate-1 py-4 pl-[25%] font-[Crozette] text-4xl">
+        <h1 className="-rotate-1 py-4 pl-8 font-[Crozette] text-4xl">
           <NavLink to="/">{configData[0]?.tituloDelSitio}</NavLink>
         </h1>
       </div>
@@ -38,6 +39,7 @@ function App() {
 
       <LanguageButton />
       <Player />
+      <ActionBar />
     </main>
   );
 }
