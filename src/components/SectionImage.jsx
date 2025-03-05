@@ -13,15 +13,17 @@ export default function SectionImage({ image, alt, className }) {
 
   return (
     <DraggableWindow title="✴" className={`h-min w-[350px] ${className}`}>
-      <img
-        src={image?.url + size.small}
-        alt={alt ?? ""}
-        className="h-full w-full cursor-zoom-in"
-        onClick={() => {
-          setLightboxImage(image);
-          setLightboxOpen(true);
-        }}
-      />
+      <div className="p-4">
+        <img
+          src={image?.url + size.small}
+          alt={alt ?? ""}
+          className="h-full w-full cursor-zoom-in rounded-lg"
+          onClick={() => {
+            setLightboxImage(image);
+            setLightboxOpen(true);
+          }}
+        />
+      </div>
     </DraggableWindow>
   );
 }
