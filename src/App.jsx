@@ -39,7 +39,7 @@ function App() {
 
       <LanguageButton />
       <Player />
-      <ActionBar />
+      {location.pathname !== "/" && <ActionBar />}
     </main>
   );
 }
