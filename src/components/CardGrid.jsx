@@ -43,8 +43,18 @@ export default function CardGrid({ data, contentType }) {
             </div>
           )}
           <h3 className="text-center text-sm hover:underline">{item.titulo}</h3>
-          {item.lugar && <p className="text-xs">{item.lugar}</p>}
-          {item.sello && <p className="text-xs">{item.sello}</p>}
+          {item.lugar && (
+            <p className="text-center text-xs">
+              {item.lugar}
+              {item.fecha ? ` [${item.fecha.slice(0, 4)}]` : ""}
+            </p>
+          )}
+          {item.sello && (
+            <p className="text-center text-xs">
+              {item.sello}
+              {item.fecha ? ` [${item.fecha.slice(0, 4)}]` : ""}
+            </p>
+          )}
         </NavLink>
       ))}
     </ul>
