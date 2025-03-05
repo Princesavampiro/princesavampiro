@@ -7,12 +7,15 @@ import SectionImage from "./SectionImage";
 import DraggableWindow from "./DraggableWindow";
 import SectionLinks from "./SectionLinks";
 import LoadToPlayerButton from "./LoadToPlayerButton";
+import useLightbox from "../hooks/useLightbox";
 
 export default function ItemContainer() {
   const location = useLocation();
   const currentPath = location.pathname.split("/")[2];
   const { data, isLoading, error } = useItem(currentPath);
   const { language } = useLanguage();
+
+  const { setLightboxOpen, setLightboxImage } = useLightbox();
 
   const size = {
     small: "?h=500&fm=webp",
@@ -47,12 +50,17 @@ export default function ItemContainer() {
         <DraggableWindow className="h-min w-max max-w-1/3 sm:fixed sm:top-1/4 sm:right-1/8">
           <div className="flex w-full items-center gap-2 overflow-x-auto p-2">
             {data[0].imagenes?.map((imagen) => (
-              <img
-                key={imagen._key}
-                src={imagen.url + size.small}
-                alt={data[0].titulo}
-                className="mx-auto w-[170px] rounded-sm"
-              />
+              <div key={imagen._key}>
+                <img
+                  src={imagen.url + size.small}
+                  alt={data[0].titulo}
+                  className="mx-auto w-[170px] rounded-sm"
+                  onClick={() => {
+                    setLightboxImage(imagen);
+                    setLightboxOpen(true);
+                  }}
+                />
+              </div>
             ))}
           </div>
         </DraggableWindow>
@@ -71,6 +79,10 @@ export default function ItemContainer() {
                     src={obra.imagen?.url + size.small}
                     alt={obra.titulo}
                     className="w-full rounded-sm"
+                    onClick={() => {
+                      setLightboxImage(obra.imagen);
+                      setLightboxOpen(true);
+                    }}
                   />
                 ) : (
                   <div className="h-[100px] w-full rounded-sm border border-white/50 bg-black opacity-30" />

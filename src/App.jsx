@@ -10,6 +10,7 @@ import ItemContainer from "./components/ItemContainer";
 import ActionBar from "./components/ActionBar";
 import Help from "./components/Help";
 import useIsMobile from "./hooks/useIsMobile";
+import Lightbox from "./components/Lightbox";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -44,6 +45,7 @@ function App() {
       {!isMobile && <Player />}
       {location.pathname !== "/" && <ActionBar />}
       {location.pathname === "/" && !isMobile && <Help />}
+      <Lightbox />
     </main>
   );
 }
