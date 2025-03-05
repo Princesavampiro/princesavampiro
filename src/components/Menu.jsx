@@ -62,7 +62,7 @@ export default function Menu({ sections }) {
               x: initialPositions[index]?.x,
               y: initialPositions[index]?.y,
             }}
-            className="pointer-events-auto absolute flex size-[120px] animate-pulse cursor-grab flex-col items-center px-2 hover:animate-none active:animate-none active:cursor-grabbing"
+            className="pointer-events-auto absolute flex size-[120px] animate-pulse cursor-grab flex-col items-center px-2 hover:z-30 hover:animate-none active:z-30 active:animate-none active:cursor-grabbing"
             style={{
               left: "50%",
               top: "50%",
