@@ -5,7 +5,7 @@ export default function SectionContent({ windowTitle, children, className }) {
   return (
     <DraggableWindow
       title={windowTitle}
-      className={`h-auto max-h-[60vh] w-1/2 lg:w-1/3 ${className}`}
+      className={`h-auto w-1/2 sm:max-h-[60vh] lg:w-1/3 ${className}`}
     >
       {children}
     </DraggableWindow>
