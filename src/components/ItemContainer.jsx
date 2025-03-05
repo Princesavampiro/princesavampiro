@@ -6,6 +6,7 @@ import SectionInfo from "./SectionInfo";
 import SectionImage from "./SectionImage";
 import DraggableWindow from "./DraggableWindow";
 import SectionLinks from "./SectionLinks";
+import LoadToPlayerButton from "./LoadToPlayerButton";
 
 export default function ItemContainer() {
   const location = useLocation();
@@ -96,6 +97,13 @@ export default function ItemContainer() {
 
       {data[0].artwork && (
         <SectionImage image={data[0].artwork} alt={data[0].titulo} />
+      )}
+
+      {data[0].embed && (
+        <LoadToPlayerButton
+          data={data[0].embed}
+          className="max-w-content fixed bottom-1/8 left-1/4 h-max"
+        />
       )}
 
       <div className="pointer-events-none fixed bottom-16 left-0 flex w-full items-center justify-center">

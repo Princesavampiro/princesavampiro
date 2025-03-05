@@ -13,6 +13,7 @@ import Sonoro from "./pages/Sonoro";
 import Visual from "./pages/Visual";
 import QuienSoy from "./pages/QuienSoy";
 import Loading from "./Loading";
+import LoadToPlayerButton from "./LoadToPlayerButton";
 
 export default function SectionContainer() {
   const location = useLocation();
@@ -69,6 +70,13 @@ export default function SectionContainer() {
         sectionTitle={sectionTitle}
         text={text}
       />
+
+      {currentSection && currentSection.embed && (
+        <LoadToPlayerButton
+          data={currentSection.embed}
+          className="max-w-content fixed bottom-1/8 left-1/4 h-max rounded-full"
+        />
+      )}
 
       {currentSection &&
         currentSection._type !== "visceral" &&
