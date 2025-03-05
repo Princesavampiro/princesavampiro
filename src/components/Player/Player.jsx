@@ -7,8 +7,8 @@ import useLanguage from "../../hooks/useLanguage";
 
 export default function Player() {
   const { data } = useConfig();
-  const { currentEmbed, setCurrentEmbed } = usePlayer();
-  const [isExpanded, setIsExpanded] = useState(true);
+  const { currentEmbed, setCurrentEmbed, isExpanded, setIsExpanded } =
+    usePlayer();
   const { language } = useLanguage();
 
   const fields = {
@@ -25,12 +25,6 @@ export default function Player() {
   useEffect(() => {
     setCurrentEmbed(data[0].releaseDestacado?.embed || null);
   }, [data, setCurrentEmbed]);
-
-  useEffect(() => {
-    if (currentEmbed) {
-      setIsExpanded(true);
-    }
-  }, [currentEmbed]);
 
   return (
     <>
