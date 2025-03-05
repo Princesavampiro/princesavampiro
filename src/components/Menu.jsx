@@ -70,7 +70,7 @@ export default function Menu({ sections }) {
               marginTop: "-60px",
             }}
           >
-            <div className="mx-auto size-6 animate-spin rounded-full border hover:animate-none">
+            <div className="mx-auto size-6 animate-spin rounded-full border border-white/30 hover:animate-none">
               ✴
             </div>
             <NavLink
