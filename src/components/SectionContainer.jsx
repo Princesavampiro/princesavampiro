@@ -14,9 +14,11 @@ import Visual from "./pages/Visual";
 import QuienSoy from "./pages/QuienSoy";
 import Loading from "./Loading";
 import LoadToPlayerButton from "./LoadToPlayerButton";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function SectionContainer() {
   const location = useLocation();
+  const isMobile = useIsMobile();
   const { currentSection, error, isLoading } = useCurrentSection();
   const {
     data: quienSoy,
@@ -87,7 +89,7 @@ export default function SectionContainer() {
         />
       )}
 
-      {currentSection && currentSection.embed && (
+      {currentSection && currentSection.embed && !isMobile && (
         <LoadToPlayerButton
           data={currentSection.embed}
           className="max-w-content fixed bottom-1/8 left-1/4 h-max rounded-full"
@@ -99,7 +101,7 @@ export default function SectionContainer() {
         currentSection._type !== "quienSoy" && (
           <SectionContent
             windowTitle={contentTitle}
-            className={`sm:fixed sm:top-1/5 sm:right-16`}
+            className={`w-full sm:fixed sm:top-1/5 sm:right-16`}
           >
             {content}
           </SectionContent>
