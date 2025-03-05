@@ -43,7 +43,7 @@ export default function Escrito() {
     return <div>Hubo un error :( </div>;
 
   return (
-    <section className="flex w-full flex-col items-center gap-8">
+    <section className="flex w-full flex-col items-center gap-8 p-4">
       <h3 className="z-10 text-center font-[Nightingale] text-xl">
         <span
           className={
@@ -65,6 +65,7 @@ export default function Escrito() {
           Blog
         </span>
       </h3>
+
       {selectedSection === "investigacion" && (
         <div className="flex w-full flex-col items-center gap-8">
           {investigacion[0].texto && (
@@ -89,6 +90,7 @@ export default function Escrito() {
             ))}
         </div>
       )}
+
       {selectedSection === "blog" && (
         <div className="flex w-full flex-col items-center gap-8">
           {blogPosts &&
