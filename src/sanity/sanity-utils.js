@@ -10,6 +10,9 @@ export async function getConfig() {
         'url': asset->url,
         }
       },
+      releaseDestacado->{
+        embed
+      }
     }`,
   );
 }
@@ -44,6 +47,7 @@ export async function getSections() {
       imagen {
         'url': asset->url,
       },
+      embed,
     }`,
   );
 }
@@ -120,8 +124,6 @@ export async function getLives() {
         'url': asset->url,
         'dimensions': asset->metadata.dimensions,
       },
-      embedVideo,
-      embedAudio,
       links[]{
         url,
         titulo
@@ -282,8 +284,6 @@ export async function getItem(slug) {
         tipoDeRelease
       },
       embed,
-      emdedAudio,
-      embedVideo,
     }`,
     { slug },
   );
