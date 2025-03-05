@@ -1,33 +1,43 @@
+import { useEffect, useState } from "react";
 import { useConfig } from "../../hooks/useData";
-import { motion, useDragControls } from "motion/react";
+import EmbedRenderer from "../EmbedRenderer";
+import DraggableWindow from "../DraggableWindow";
+import usePlayer from "../../hooks/usePlayer";
 
 export default function Player() {
   const { data } = useConfig();
-  const controls = useDragControls();
+  const { currentEmbed, setCurrentEmbed } = usePlayer();
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  useEffect(() => {
+    setCurrentEmbed(data[0].releaseDestacado?.embed || null);
+  }, [data, setCurrentEmbed]);
+
+  useEffect(() => {
+    if (currentEmbed) {
+      setIsExpanded(true);
+    }
+  }, [currentEmbed]);
 
   return (
-    <motion.div
-      drag
-      dragListener={false}
-      dragControls={controls}
-      whileDrag={{ scale: 0.9 }}
-      dragMomentum={false}
-      className="fixed bottom-8 left-8 flex w-max items-center gap-2 select-none"
-    >
-      {data[0].audio && (
-        <audio
-          controls
-          src={data[0].audio.archivo?.url || data[0].audio.url}
-          className="rounded-full"
-          loop
-        />
-      )}
-      <div
-        onPointerDown={(event) => controls.start(event)}
-        className="animate-spin cursor-grab hover:animate-none"
-      >
-        ✴
-      </div>
-    </motion.div>
+    <>
+      <DraggableWindow className="max-w-content fixed bottom-8 left-8 h-max min-w-[400px]">
+        <div className={`${isExpanded ? "h-max" : "h-0"}`}>
+          {currentEmbed && <EmbedRenderer value={currentEmbed} />}
+        </div>
+        <div
+          className="relative z-20 flex cursor-pointer justify-around gap-2 bg-[#00000022] p-2 backdrop-blur-sm select-none"
+          onClick={() =>
+            setIsExpanded((prev) => {
+              return !prev;
+            })
+          }
+        >
+          <div className="text-center">
+            {isExpanded ? "minimizar" : "maximizar"}
+          </div>
+        </div>
+      </DraggableWindow>
+    </>
   );
 }
