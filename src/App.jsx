@@ -8,6 +8,7 @@ import Player from "./components/Player/Player";
 import SectionContainer from "./components/SectionContainer";
 import ItemContainer from "./components/ItemContainer";
 import ActionBar from "./components/ActionBar";
+import Help from "./components/Help";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -40,6 +41,7 @@ function App() {
       <LanguageButton />
       <Player />
       {location.pathname !== "/" && <ActionBar />}
+      {location.pathname === "/" && <Help />}
     </main>
   );
 }
