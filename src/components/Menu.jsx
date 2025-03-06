@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router";
-import useLanguage from "../hooks/useLanguage";
 import { motion, useDragControls } from "motion/react";
+import useLanguage from "../hooks/useLanguage";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function Menu({ sections }) {
   const sectionOrder = ["visceral", "sonoro", "visual", "escrito", "quienSoy"];
   const { language } = useLanguage();
+  const isMobile = useIsMobile();
   const controlsArray = sections ? sections.map(() => useDragControls()) : [];
   const [initialPositions, setInitialPositions] = useState([]);
   const positionsCalculated = useRef(false);
@@ -56,7 +58,7 @@ export default function Menu({ sections }) {
       {sortedSections.map((section, index) => (
         <motion.div
           drag
-          dragListener={false}
+          dragListener={isMobile}
           dragControls={controlsArray[index]}
           whileDrag={{ scale: 0.9 }}
           dragMomentum={false}
@@ -65,7 +67,7 @@ export default function Menu({ sections }) {
             x: initialPositions[index]?.x,
             y: initialPositions[index]?.y,
           }}
-          className="pointer-events-auto absolute flex size-[120px] animate-pulse cursor-grab flex-col items-center px-2 hover:z-30 hover:animate-none active:z-30 active:animate-none active:cursor-grabbing"
+          className="pointer-events-auto absolute flex max-w-[120px] animate-pulse flex-col items-center hover:z-30 active:z-30"
           style={{
             left: "50%",
             top: "50%",
@@ -73,11 +75,15 @@ export default function Menu({ sections }) {
             marginTop: "-60px",
           }}
         >
-          {index !== sections.length && (
+          {!isMobile ? (
             <div
               className="mx-auto size-6 animate-spin cursor-grab rounded-full border border-white/30 hover:animate-none"
               onPointerDown={(event) => controlsArray[index].start(event)}
             >
+              ✴
+            </div>
+          ) : (
+            <div className="mx-auto size-6 animate-spin rounded-full border border-white/30">
               ✴
             </div>
           )}
