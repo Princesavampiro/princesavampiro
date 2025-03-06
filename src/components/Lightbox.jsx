@@ -13,16 +13,13 @@ export default function Lightbox() {
       onClick={() => setLightboxOpen(false)}
     >
       {!isMobile ? (
-        <div>
-          <img
-            src={lightboxImage.url + "?h=1080&fm=webp"}
-            className="invert saturate-200 sm:invert-0 sm:saturate-100"
-          />
+        <div className="items-cenetr flex h-full w-full justify-center">
+          <img src={lightboxImage.url + "?h=1080&fm=webp"} />
         </div>
       ) : (
         <img
           src={lightboxImage.url + "?h=1080&fm=webp"}
-          className="h-full w-full invert saturate-200 sm:invert-0 sm:saturate-100"
+          className="h-full w-full invert saturate-200"
         />
       )}
     </div>
