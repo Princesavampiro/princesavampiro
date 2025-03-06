@@ -8,7 +8,7 @@ export default function ImageGallery({ images }) {
     <ul className="flex flex-wrap gap-4">
       {images.map((img) => (
         <li key={img._key} className="w-[200px]">
-          <img src={img.url + size.small} />
+          <img className="rounded-md" src={img.url + size.small} />
         </li>
       ))}
     </ul>

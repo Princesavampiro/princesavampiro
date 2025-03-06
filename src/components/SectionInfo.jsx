@@ -17,9 +17,9 @@ export default function SectionInfo({
       title={windowTitle}
       className={`h-max max-w-prose sm:max-h-[40vh] ${className}`}
     >
-      <div className="p-4">
+      <div className="p-8">
         {sectionTitle && (
-          <h1 className="py-4 font-[Nightingale] text-2xl">{sectionTitle}</h1>
+          <h1 className="pb-4 font-[Nightingale] text-2xl">{sectionTitle}</h1>
         )}
 
         {details && (

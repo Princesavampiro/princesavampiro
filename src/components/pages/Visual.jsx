@@ -19,5 +19,9 @@ export default function Visual() {
 
   const visualData = data.filter((i) => i._type === "visual")[0];
 
-  return <CardGrid data={expos} contentType="expo" />;
+  return (
+    <div className="p-8">
+      <CardGrid data={expos} contentType="expo" />
+    </div>
+  );
 }

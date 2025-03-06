@@ -4,7 +4,10 @@ export const components = {
   types: {
     embed: (props) => <EmbedRenderer value={props.value.html} />,
     image: (props) => (
-      <img className="mx-auto my-16 w-full max-w-4xl" src={props.value.url} />
+      <img
+        className="mx-auto my-16 w-full max-w-4xl rounded-md"
+        src={props.value.url}
+      />
     ),
   },
   block: {

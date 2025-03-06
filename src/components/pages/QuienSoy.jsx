@@ -13,7 +13,7 @@ export default function QuienSoy() {
   if (!data?.comentarios) return null;
 
   return (
-    <div className="flex flex-col gap-2 p-4 pt-8">
+    <div className="flex max-w-prose flex-col gap-2 p-8 pt-8">
       {data.comentarios.map((comentario, index) => (
         <div key={comentario._key} className="flex flex-col gap-2">
           <PortableText

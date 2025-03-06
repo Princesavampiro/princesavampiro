@@ -17,7 +17,7 @@ export default function SectionImage({ image, alt, className }) {
         <img
           src={image?.url + size.small}
           alt={alt ?? ""}
-          className="h-full w-full cursor-zoom-in rounded-lg"
+          className="h-full w-full cursor-zoom-in rounded-md"
           onClick={() => {
             setLightboxImage(image);
             setLightboxOpen(true);
