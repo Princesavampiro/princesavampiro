@@ -121,7 +121,13 @@ export function Entry({ arr, entry, index }) {
 
   return (
     <div className="flex w-full flex-col items-start gap-2">
-      <div className="text-xs">{entry.fecha}</div>
+      <div className="text-xs">
+        {new Date(entry.fecha).toLocaleDateString(language, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })}
+      </div>
       <h4 className="mb-6 text-xl underline">{entry.titulo.es}</h4>
       <div className="flex flex-col items-center gap-4">
         <PortableText
