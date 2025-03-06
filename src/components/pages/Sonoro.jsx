@@ -46,26 +46,31 @@ export default function Sonoro() {
     return <div>Hubo un error :( </div>;
 
   return (
-    <>
+    <section className="flex w-full flex-col items-center gap-8 p-8">
       <h3 className="text-center font-[Nightingale] text-xl">
         <span
-          className={
-            selectedSection === "releases" ? "underline" : "cursor-pointer"
-          }
+          className={`rounded-full px-2 py-1 drop-shadow-lg ${
+            selectedSection === "releases"
+              ? "bg-white/30"
+              : "cursor-pointer bg-white/15 hover:bg-white/30"
+          }`}
           onClick={() => setSelectedSection("releases")}
         >
           Releases
         </span>
         /{" "}
         <span
-          className={
-            selectedSection === "lives" ? "underline" : "cursor-pointer"
-          }
+          className={`rounded-full px-2 py-1 drop-shadow-lg ${
+            selectedSection === "lives"
+              ? "bg-white/30"
+              : "cursor-pointer bg-white/15 hover:bg-white/30"
+          }`}
           onClick={() => setSelectedSection("lives")}
         >
           Performances
         </span>
       </h3>
+
       {selectedSection === "releases" && (
         <div className="flex w-full flex-col items-center gap-8">
           {tipos && (
@@ -73,30 +78,32 @@ export default function Sonoro() {
               {tipos.map((tipo) => (
                 <li
                   key={tipo._id}
-                  className={`cursor-pointer rounded-[50%] border px-4 text-sm uppercase select-none ${selectedType === tipo.tipoDeRelease ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}
+                  className={`cursor-pointer rounded-[50%] border border-white/40 bg-black/5 px-2 py-1 text-sm uppercase transition-all select-none ${selectedType === tipo.tipoDeRelease ? "rounded-none" : "hover:bg-white/30"}`}
                   onClick={() => setSelectedType(tipo.tipoDeRelease)}
                 >
                   {tipo.tipoDeRelease + "s"}
                 </li>
               ))}
               <li
-                className={`cursor-pointer rounded-[50%] border px-2 text-sm uppercase select-none hover:bg-white hover:text-black`}
+                className={`cursor-pointer rounded-[50%] border border-white/40 bg-black/5 px-2 py-1 text-sm uppercase transition-all select-none hover:bg-white/30`}
                 onClick={() => setSelectedType(null)}
               >
                 ✕
               </li>
             </ul>
           )}
+
           {filteredReleases && (
             <CardGrid data={filteredReleases} contentType="release" />
           )}
         </div>
       )}
+
       {selectedSection === "lives" && (
         <div className="flex w-full flex-col items-center gap-8">
           {lives && <CardGrid data={lives} contentType="live" />}
         </div>
       )}
-    </>
+    </section>
   );
 }
