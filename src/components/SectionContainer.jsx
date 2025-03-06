@@ -82,13 +82,6 @@ export default function SectionContainer() {
         />
       )}
 
-      {currentSection && currentSection.embed && !isMobile && (
-        <LoadToPlayerButton
-          data={currentSection.embed}
-          className="max-w-content fixed bottom-1/8 left-1/4 h-max rounded-full"
-        />
-      )}
-
       {currentSection &&
         currentSection._type !== "visceral" &&
         currentSection._type !== "quienSoy" && (
@@ -116,6 +109,13 @@ export default function SectionContainer() {
         image={currentSection.imagen}
         className={`sm:fixed sm:bottom-32 sm:left-1/3`}
       />
+
+      {currentSection && currentSection.embed && !isMobile && (
+        <LoadToPlayerButton
+          data={currentSection.embed}
+          className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-50 active:z-50"
+        />
+      )}
     </div>
   );
 }
