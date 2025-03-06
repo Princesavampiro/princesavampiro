@@ -15,6 +15,7 @@ import QuienSoy from "./pages/QuienSoy";
 import Loading from "./Loading";
 import LoadToPlayerButton from "./LoadToPlayerButton";
 import useIsMobile from "../hooks/useIsMobile";
+import WebCredits from "./WebCredits";
 
 export default function SectionContainer() {
   const location = useLocation();
@@ -111,11 +112,13 @@ export default function SectionContainer() {
         quienSoy?.comentarios?.length > 0 && (
           <SectionContent
             windowTitle={contentTitle}
-            className={`sm:fixed sm:top-1/5 sm:right-16`}
+            className={`w-full sm:fixed sm:top-1/5 sm:right-16`}
           >
             {content}
           </SectionContent>
         )}
+
+      {currentSection && currentSection._type === "quienSoy" && <WebCredits />}
       <SectionLinks
         links={currentSection.links}
         className={`sm:fixed sm:right-1/8 sm:bottom-1/16`}

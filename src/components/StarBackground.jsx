@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import GenerativeSharpLines from "./GenerativeSharpLines";
 
 const STAR_CHARS = ["✧", "⋆", "⭒", "✲", ".̶̧̢̤̣̮̮͍͆̏ͫ", "."];
 const NUM_STARS = 150;
@@ -57,7 +58,9 @@ export default function StarBackground() {
           maskImage: "radial-gradient(ellipse, black 20%, transparent 100%)",
         }}
         className="h-full w-full bg-black"
-      />
+      >
+        <GenerativeSharpLines />
+      </div>
     </div>
   );
 }

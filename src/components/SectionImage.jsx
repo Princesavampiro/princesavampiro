@@ -1,6 +1,9 @@
 import DraggableWindow from "./DraggableWindow";
+import useLightbox from "../hooks/useLightbox";
 
 export default function SectionImage({ image, alt, className }) {
+  const { setLightboxImage, setLightboxOpen } = useLightbox();
+
   const size = {
     small: "?h=500&fm=webp",
     large: "?h=1080&fm=webp",
@@ -10,11 +13,17 @@ export default function SectionImage({ image, alt, className }) {
 
   return (
     <DraggableWindow title="✴" className={`h-min w-[350px] ${className}`}>
-      <img
-        src={image?.url + size.small}
-        alt={alt ?? ""}
-        className="h-full w-full"
-      />
+      <div className="p-4">
+        <img
+          src={image?.url + size.small}
+          alt={alt ?? ""}
+          className="h-full w-full cursor-zoom-in rounded-lg"
+          onClick={() => {
+            setLightboxImage(image);
+            setLightboxOpen(true);
+          }}
+        />
+      </div>
     </DraggableWindow>
   );
 }

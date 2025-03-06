@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { LanguageProvider } from "./context/LanguageContext.jsx";
 import { PlayerProvider } from "./context/PlayerContext.jsx";
+import { LightboxProvider } from "./context/LightboxContext.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +23,9 @@ createRoot(document.getElementById("root")).render(
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
           <PlayerProvider>
-            <App />
+            <LightboxProvider>
+              <App />
+            </LightboxProvider>
           </PlayerProvider>
         </QueryClientProvider>
       </LanguageProvider>

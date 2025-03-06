@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router";
 import {
   useReleases,
   useSections,
   useTiposDeReleases,
   useLives,
 } from "../../hooks/useData";
-import useLanguage from "../../hooks/useLanguage";
 import Loading from "../Loading";
-import SectionInfo from "../SectionInfo";
-import DraggableWindow from "../DraggableWindow";
 import CardGrid from "../CardGrid";
 
 export default function Sonoro() {
@@ -17,7 +13,7 @@ export default function Sonoro() {
   const [filteredReleases, setFilteredReleases] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
 
-  const { data, isLoading, error } = useSections();
+  const { isLoading, error } = useSections();
   const {
     data: releases,
     isLoading: isReleasesLoading,
@@ -34,8 +30,6 @@ export default function Sonoro() {
     error: livesError,
   } = useLives();
 
-  const { language } = useLanguage();
-
   useEffect(() => {
     selectedType
       ? setFilteredReleases(
@@ -50,8 +44,6 @@ export default function Sonoro() {
     return <Loading />;
   if (error || releasesError || tiposError || livesError)
     return <div>Hubo un error :( </div>;
-
-  const sonoroData = data.filter((i) => i._type === "sonoro")[0];
 
   return (
     <>
@@ -71,7 +63,7 @@ export default function Sonoro() {
           }
           onClick={() => setSelectedSection("lives")}
         >
-          Lives
+          Performances
         </span>
       </h3>
       {selectedSection === "releases" && (

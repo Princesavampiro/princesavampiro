@@ -28,12 +28,12 @@ export default function Player() {
 
   return (
     <>
-      <DraggableWindow className="max-w-content fixed bottom-8 left-8 h-max min-w-[400px]">
-        <div className={`${isExpanded ? "h-max" : "h-0"}`}>
+      <DraggableWindow className="max-w-content fixed bottom-8 left-8 z-50 h-max">
+        <div className={`${isExpanded ? "h-max min-w-[400px]" : "h-0 w-20"}`}>
           {currentEmbed && <EmbedRenderer value={currentEmbed} />}
         </div>
         <div
-          className="relative z-20 flex cursor-pointer justify-around gap-2 bg-[#00000022] p-2 backdrop-blur-sm select-none"
+          className="flex cursor-pointer justify-around gap-2 bg-[#00000022] p-2 backdrop-blur-sm select-none"
           onClick={() =>
             setIsExpanded((prev) => {
               return !prev;
