@@ -7,6 +7,7 @@ import {
 } from "../../hooks/useData";
 import useLanguage from "../../hooks/useLanguage";
 import Loading from "../Loading";
+import Error from "../Error";
 import { PortableText } from "@portabletext/react";
 import { components } from "../PortableText/PortableTextComponents";
 
@@ -40,7 +41,7 @@ export default function Escrito() {
   )
     return <Loading />;
   if (error || investigacionError || articulosError || blogPostsError)
-    return <div>Hubo un error :( </div>;
+    return <Error />;
 
   return (
     <section className="flex w-full flex-col items-center gap-16 p-8">

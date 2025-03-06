@@ -6,6 +6,7 @@ import {
   useLives,
 } from "../../hooks/useData";
 import Loading from "../Loading";
+import Error from "../Error";
 import CardGrid from "../CardGrid";
 
 export default function Sonoro() {
@@ -42,8 +43,7 @@ export default function Sonoro() {
 
   if (isLoading || isReleasesLoading || isTiposLoading || isLivesLoading)
     return <Loading />;
-  if (error || releasesError || tiposError || livesError)
-    return <div>Hubo un error :( </div>;
+  if (error || releasesError || tiposError || livesError) return <Error />;
 
   return (
     <section className="flex w-full flex-col items-center gap-8 p-8">

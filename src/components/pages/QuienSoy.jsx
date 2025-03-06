@@ -3,13 +3,14 @@ import { PortableText } from "@portabletext/react";
 import useLanguage from "../../hooks/useLanguage";
 import { components } from "../PortableText/PortableTextComponents";
 import Loading from "../Loading";
+import Error from "../Error";
 
 export default function QuienSoy() {
   const { data, isLoading, error } = useQuienSoy();
   const { language } = useLanguage();
 
   if (isLoading) return <Loading />;
-  if (error) return <div>Hubo un error :( </div>;
+  if (error) return <Error />;
   if (!data?.comentarios) return null;
 
   return (

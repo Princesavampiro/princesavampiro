@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router";
 import { useItem } from "../hooks/useData";
 import Loading from "./Loading";
+import Error from "./Error";
 import useLanguage from "../hooks/useLanguage";
 import SectionInfo from "./SectionInfo";
 import SectionImage from "./SectionImage";
@@ -28,7 +29,12 @@ export default function ItemContainer() {
         <Loading />
       </div>
     );
-  if (error) return <div>Hubo un error :(</div>;
+  if (error)
+    return (
+      <div className="fixed inset-0 z-100 flex h-screen w-full items-center justify-center rounded-lg bg-[#000000aa] backdrop-blur-lg">
+        <Error />
+      </div>
+    );
 
   const details = {
     date: data[0].fecha,
