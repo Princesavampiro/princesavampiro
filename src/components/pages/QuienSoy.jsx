@@ -13,7 +13,7 @@ export default function QuienSoy() {
   if (!data?.comentarios) return null;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 p-4 pt-8">
       {data.comentarios.map((comentario, index) => (
         <div key={comentario._key} className="flex flex-col gap-2">
           <PortableText
@@ -21,7 +21,7 @@ export default function QuienSoy() {
             value={comentario[language] || comentario.es}
           />
           {index !== data.comentarios.length - 1 && (
-            <div className="mx-auto">✴</div>
+            <div className="mx-auto my-4">✴</div>
           )}
         </div>
       ))}
