@@ -124,7 +124,7 @@ export default function ItemContainer() {
       {data[0].embed && (
         <LoadToPlayerButton
           data={data[0].embed}
-          className="max-w-content fixed bottom-1/8 left-1/4 h-max"
+          className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-50 active:z-50"
         />
       )}
     </section>
