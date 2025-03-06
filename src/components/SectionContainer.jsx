@@ -2,19 +2,21 @@ import { useLocation } from "react-router";
 import useLanguage from "../hooks/useLanguage";
 import { useConfig, useQuienSoy } from "../hooks/useData";
 import { useCurrentSection } from "../hooks/useCurrentSection";
+import useIsMobile from "../hooks/useIsMobile";
+
 import SectionInfo from "../components/SectionInfo";
 import SectionContent from "../components/SectionContent";
 import SectionTitle from "../components/SectionTitle";
 import SectionLinks from "../components/SectionLinks";
 import SectionImage from "../components/SectionImage";
+import Loading from "./Loading";
+import LoadToPlayerButton from "./LoadToPlayerButton";
+import WebCredits from "./WebCredits";
+
 import Escrito from "./pages/Escrito";
 import Sonoro from "./pages/Sonoro";
 import Visual from "./pages/Visual";
 import QuienSoy from "./pages/QuienSoy";
-import Loading from "./Loading";
-import LoadToPlayerButton from "./LoadToPlayerButton";
-import useIsMobile from "../hooks/useIsMobile";
-import WebCredits from "./WebCredits";
 
 export default function SectionContainer() {
   const location = useLocation();
@@ -101,14 +103,20 @@ export default function SectionContainer() {
         )}
 
       {currentSection && currentSection._type === "quienSoy" && <WebCredits />}
-      <SectionLinks
-        links={currentSection.links}
-        className={`sm:fixed sm:right-1/8 sm:bottom-1/16`}
-      />
-      <SectionImage
-        image={currentSection.imagen}
-        className={`sm:fixed sm:bottom-32 sm:left-1/3`}
-      />
+
+      {currentSection.links && (
+        <SectionLinks
+          links={currentSection.links}
+          className={`sm:fixed sm:right-1/8 sm:bottom-1/16`}
+        />
+      )}
+
+      {currentSection.imagen && (
+        <SectionImage
+          image={currentSection.imagen}
+          className={`sm:fixed sm:bottom-32 sm:left-1/3`}
+        />
+      )}
 
       {currentSection && currentSection.embed && !isMobile && (
         <LoadToPlayerButton
