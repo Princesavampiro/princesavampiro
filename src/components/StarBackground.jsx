@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import GenerativeSharpLines from "./GenerativeSharpLines";
+import useIsMobile from "../hooks/useIsMobile";
+import { useLocation } from "react-router";
 
 const STAR_CHARS = ["✧", "⋆", "⭒", "✲", ".̶̧̢̤̣̮̮͍͆̏ͫ", "."];
 const NUM_STARS = 150;
@@ -17,6 +19,9 @@ function generateStar() {
 }
 
 export default function StarBackground() {
+  const location = useLocation();
+  const home = location.pathname === "/";
+  const isMobile = useIsMobile();
   const [stars, setStars] = useState([]);
 
   useEffect(() => {
@@ -59,7 +64,7 @@ export default function StarBackground() {
         }}
         className="h-full w-full bg-black"
       >
-        <GenerativeSharpLines />
+        {isMobile && !home ? null : <GenerativeSharpLines />}
       </div>
     </div>
   );
