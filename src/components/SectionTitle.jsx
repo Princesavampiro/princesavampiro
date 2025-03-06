@@ -6,7 +6,7 @@ export default function SectionTitle({ title, className }) {
       drag
       whileDrag={{ scale: 0.9 }}
       dragMomentum={false}
-      className={`almendra w-max cursor-grab text-9xl uppercase ${className}`}
+      className={`almendra w-max cursor-grab pt-12 pl-4 text-7xl uppercase sm:text-9xl ${className}`}
     >
       {title}
     </motion.div>

@@ -62,7 +62,7 @@ export default function SectionContainer() {
   if (error || configError || !currentSection || quienSoyError) return null;
 
   return (
-    <div className="h-full min-h-screen overflow-hidden">
+    <div className="h-full min-h-screen overflow-hidden bg-[#000000aa] backdrop-blur-xl sm:bg-transparent sm:backdrop-blur-none">
       {location.pathname === "/visceral" && (
         <SectionTitle
           title="Visceral"
@@ -110,6 +110,8 @@ export default function SectionContainer() {
           className={`sm:fixed sm:right-1/8 sm:bottom-1/16`}
         />
       )}
+
+      <div className="sm:display-none text-center">✴</div>
 
       {currentSection.imagen && (
         <SectionImage
