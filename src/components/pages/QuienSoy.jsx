@@ -20,6 +20,9 @@ export default function QuienSoy() {
             components={components}
             value={comentario[language] || comentario.es}
           />
+          {comentario.autor && (
+            <div className="text-start">⋰ {comentario.autor}</div>
+          )}
           {index !== data.comentarios.length - 1 && (
             <div className="mx-auto my-4">✴</div>
           )}
