@@ -112,7 +112,7 @@ export default function SectionContainer() {
         quienSoy?.comentarios?.length > 0 && (
           <SectionContent
             windowTitle={contentTitle}
-            className={`sm:fixed sm:top-1/5 sm:right-16`}
+            className={`w-full sm:fixed sm:top-1/5 sm:right-16`}
           >
             {content}
           </SectionContent>
