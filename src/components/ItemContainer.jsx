@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router";
 import { useItem } from "../hooks/useData";
 import Loading from "./Loading";
+import Error from "./Error";
 import useLanguage from "../hooks/useLanguage";
 import SectionInfo from "./SectionInfo";
 import SectionImage from "./SectionImage";
@@ -24,11 +25,16 @@ export default function ItemContainer() {
 
   if (isLoading)
     return (
-      <div className="fixed inset-0 grid place-items-center backdrop-blur-sm">
+      <div className="fixed inset-0 z-60 grid place-items-center backdrop-blur-sm">
         <Loading />
       </div>
     );
-  if (error) return <div>Hubo un error :(</div>;
+  if (error)
+    return (
+      <div className="fixed inset-0 z-100 flex h-screen w-full items-center justify-center rounded-lg bg-[#000000aa] backdrop-blur-lg">
+        <Error />
+      </div>
+    );
 
   const details = {
     date: data[0].fecha,
@@ -38,7 +44,7 @@ export default function ItemContainer() {
   };
 
   return (
-    <section className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#00000044] backdrop-blur-xl">
+    <section className="fixed inset-0 z-60 h-screen w-screen overflow-hidden bg-[#00000044] backdrop-blur-xl">
       <SectionInfo
         sectionTitle={data[0].titulo}
         details={details}
@@ -124,7 +130,7 @@ export default function ItemContainer() {
       {data[0].embed && (
         <LoadToPlayerButton
           data={data[0].embed}
-          className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-50 active:z-50"
+          className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-70 active:z-70"
         />
       )}
     </section>

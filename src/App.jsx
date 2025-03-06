@@ -11,6 +11,7 @@ import ActionBar from "./components/ActionBar";
 import Help from "./components/Help";
 import useIsMobile from "./hooks/useIsMobile";
 import Lightbox from "./components/Lightbox";
+import Error from "./components/Error";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -24,7 +25,12 @@ function App() {
   const isMobile = useIsMobile();
 
   if (isLoading || isConfigLoading) return <LoadingScreen />;
-  if (error || configError) return <div>Hubo un error :( </div>;
+  if (error || configError)
+    return (
+      <div className="fixed inset-0 z-100 flex h-screen w-full items-center justify-center rounded-lg bg-[#000000aa] backdrop-blur-lg">
+        <Error />
+      </div>
+    );
 
   return (
     <main className="relative flex min-h-screen flex-col">
