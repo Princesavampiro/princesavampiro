@@ -1,4 +1,5 @@
 import { PortableText } from "@portabletext/react";
+import useLanguage from "../hooks/useLanguage";
 import { components } from "./PortableText/PortableTextComponents";
 import DraggableWindow from "./DraggableWindow";
 
@@ -10,6 +11,7 @@ export default function SectionInfo({
   className,
   contact,
 }) {
+  const { language } = useLanguage();
   if (!windowTitle && !sectionTitle && !text) return null;
 
   return (
@@ -24,7 +26,15 @@ export default function SectionInfo({
 
         {details && (
           <div className="pb-4 text-sm">
-            {details.date && <p>{details.date}</p>}
+            {details.date && (
+              <p>
+                {new Date(details.date).toLocaleDateString(language, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+            )}
             {details.label && <p>{details.label}</p>}
             {details.releaseType && <p>{details.releaseType}</p>}
             {details.place && <p>{details.place}</p>}
@@ -36,9 +46,10 @@ export default function SectionInfo({
             <PortableText components={components} value={text} />
           </div>
         )}
+
         {contact?.email && (
-          <div className="flex gap-2 py-4">
-            {contact?.message && <p>{contact?.message}: </p>}
+          <div className="gap-2 py-4 sm:flex">
+            {contact?.message && <span>{contact?.message}: </span>}
             <a
               href={`mailto:${contact.email}`}
               className="animate-pulse hover:animate-none hover:underline"

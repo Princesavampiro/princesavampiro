@@ -37,7 +37,7 @@ function App() {
       <StarBackground />
 
       <div className="fixed inset-0 animate-pulse">
-        <h1 className="-rotate-1 py-4 pl-8 font-[Crozette] text-4xl">
+        <h1 className="-rotate-1 py-6 pl-4 font-[Crozette] text-3xl sm:py-4 sm:pl-8 sm:text-4xl">
           <NavLink to="/">{configData[0]?.tituloDelSitio}</NavLink>
         </h1>
       </div>

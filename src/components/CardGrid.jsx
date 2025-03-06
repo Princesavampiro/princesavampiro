@@ -1,9 +1,11 @@
 import { NavLink } from "react-router";
 import { useLocation } from "react-router";
+import useIsMobile from "../hooks/useIsMobile";
 
 export default function CardGrid({ data, contentType }) {
   const location = useLocation(); // Get current path
   const currentPath = location.pathname.split("/")[1];
+  const isMobile = useIsMobile();
 
   const size = {
     small: "?h=500&fm=webp",
@@ -22,8 +24,8 @@ export default function CardGrid({ data, contentType }) {
         <NavLink
           to={currentPath + "/" + item.slug.current}
           key={item._id}
-          style={{ transform: getRandomTranslation() }}
-          className={`z-0 flex max-w-[150px] flex-col items-center justify-center rounded-lg py-4 hover:z-10`}
+          style={isMobile ? {} : { transform: getRandomTranslation() }}
+          className={`z-0 flex flex-col items-center justify-center rounded-lg py-4 hover:z-10 sm:max-w-[150px]`}
         >
           {(item.imagenes?.[0].url || item.artwork) && (
             <div className="hover:brightness-180 hover:invert hover:saturate-200">
@@ -42,13 +44,16 @@ export default function CardGrid({ data, contentType }) {
                   )}
             </div>
           )}
+
           <h3 className="text-center text-sm hover:underline">{item.titulo}</h3>
+
           {item.lugar && (
             <p className="text-center text-xs">
               {item.lugar}
               {item.fecha ? ` [${item.fecha.slice(0, 4)}]` : ""}
             </p>
           )}
+
           {item.sello && (
             <p className="text-center text-xs">
               {item.sello}

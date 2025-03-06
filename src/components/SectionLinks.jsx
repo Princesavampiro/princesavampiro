@@ -8,7 +8,7 @@ export default function SectionLinks({ links, className }) {
   return (
     <DraggableWindow
       title={"Links"}
-      className={`h-min max-w-1/4 min-w-[250px] ${className}`}
+      className={`h-min min-w-[250px] sm:max-w-1/4 ${className}`}
     >
       <ul className="p-4">
         {links.map((link) => (
