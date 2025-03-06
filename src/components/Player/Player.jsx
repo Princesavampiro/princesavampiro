@@ -29,7 +29,9 @@ export default function Player() {
   return (
     <>
       <DraggableWindow className="max-w-content fixed bottom-8 left-8 z-50 h-max">
-        <div className={`${isExpanded ? "h-max min-w-[400px]" : "h-0 w-20"}`}>
+        <div
+          className={`${isExpanded ? "h-max min-w-[400px]" : "h-0 w-20 overflow-hidden"}`}
+        >
           {currentEmbed && <EmbedRenderer value={currentEmbed} />}
         </div>
         <div
