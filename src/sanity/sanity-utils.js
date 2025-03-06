@@ -78,7 +78,8 @@ export async function getQuienSoy() {
         _key,
         url,
         titulo
-      }
+      },
+      tituloComentarios,
     }`,
   );
 }
