@@ -45,13 +45,6 @@ export default function SectionContainer() {
       currentSection?.contacto?.mensaje?.es,
   };
 
-  const contentTitle =
-    currentSection?._type === "quienSoy"
-      ? language === "es"
-        ? "Comentarios"
-        : "Comments"
-      : null;
-
   const content =
     currentSection?._type === "escrito" ? (
       <Escrito />
@@ -99,10 +92,7 @@ export default function SectionContainer() {
       {currentSection &&
         currentSection._type !== "visceral" &&
         currentSection._type !== "quienSoy" && (
-          <SectionContent
-            windowTitle={contentTitle}
-            className={`w-full sm:fixed sm:top-1/5 sm:right-16`}
-          >
+          <SectionContent className={`w-full sm:fixed sm:top-1/5 sm:right-16`}>
             {content}
           </SectionContent>
         )}
@@ -110,7 +100,7 @@ export default function SectionContainer() {
         currentSection._type === "quienSoy" &&
         quienSoy?.comentarios?.length > 0 && (
           <SectionContent
-            windowTitle={contentTitle}
+            windowTitle={quienSoy?.tituloComentarios?.[language]}
             className={`w-full sm:fixed sm:top-1/5 sm:right-16`}
           >
             {content}
