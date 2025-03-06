@@ -58,7 +58,12 @@ export default function SectionContainer() {
       <QuienSoy />
     ) : null;
 
-  if (isLoading || isConfigLoading || isQuienSoyLoading) return <Loading />;
+  if (isLoading || isConfigLoading || isQuienSoyLoading)
+    return (
+      <div className="flex h-screen w-full justify-center">
+        <Loading />
+      </div>
+    );
   if (error || configError || !currentSection || quienSoyError) return null;
 
   return (
