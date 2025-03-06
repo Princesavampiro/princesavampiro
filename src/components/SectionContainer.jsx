@@ -5,7 +5,6 @@ import { useCurrentSection } from "../hooks/useCurrentSection";
 import SectionInfo from "../components/SectionInfo";
 import SectionContent from "../components/SectionContent";
 import SectionTitle from "../components/SectionTitle";
-import HomeButton from "../components/HomeButton";
 import SectionLinks from "../components/SectionLinks";
 import SectionImage from "../components/SectionImage";
 import Escrito from "./pages/Escrito";
