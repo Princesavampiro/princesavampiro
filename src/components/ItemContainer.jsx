@@ -24,7 +24,7 @@ export default function ItemContainer() {
 
   if (isLoading)
     return (
-      <div className="fixed inset-0 grid place-items-center backdrop-blur-sm">
+      <div className="fixed inset-0 z-60 grid place-items-center backdrop-blur-sm">
         <Loading />
       </div>
     );
