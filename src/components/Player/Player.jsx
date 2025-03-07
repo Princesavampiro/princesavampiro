@@ -37,7 +37,7 @@ export default function Player() {
         dragControls={controls}
         whileDrag={{ scale: 1.05, cursor: "grabbing" }}
         dragMomentum={false}
-        className="max-w-content fixed bottom-8 left-8 z-70 flex h-max flex-col overflow-hidden rounded-lg border-white/30 bg-[#00000022] drop-shadow-[0_0_12px_#000] backdrop-blur-xl select-none sm:border sm:backdrop-blur-sm"
+        className="max-w-content fixed bottom-8 left-8 z-70 flex h-max flex-col overflow-hidden rounded-lg border-white/30 bg-[#00000022] shadow-[0_0_12px_#000] backdrop-blur-xl select-none sm:border sm:backdrop-blur-sm"
       >
         {!isMobile && (
           <div
