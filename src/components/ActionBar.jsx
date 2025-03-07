@@ -1,21 +1,25 @@
 import { NavLink, useLocation } from "react-router";
+import { motion } from "motion/react";
 
 export default function ActionBar() {
   const location = useLocation();
 
   return (
-    <div className="fixed bottom-4 left-1/2 z-100 flex -translate-x-1/2 items-center justify-center gap-4 rounded-full border border-white/30 bg-black/30 p-3 text-4xl backdrop-blur-md sm:bg-black/5">
-      <NavLink
-        to={
-          location.pathname.split("/").length > 2
-            ? "../" + location.pathname.split("/")[1]
-            : "/"
-        }
-        aria-label="Home"
-        className="flex size-12 cursor-pointer items-center justify-center rounded-full pt-1 pl-0.5 text-center font-[Crozette] leading-none hover:bg-white/20"
+    <NavLink
+      to={
+        location.pathname.split("/").length > 2
+          ? "../" + location.pathname.split("/")[1]
+          : "/"
+      }
+      aria-label="Home"
+    >
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className={`fixed bottom-4 left-1/2 z-100 flex size-16 -translate-x-1/2 cursor-pointer items-center justify-center gap-4 rounded-full border border-white/30 p-3 text-center font-[Crozette] text-4xl leading-none text-black backdrop-blur-md select-none ${location.pathname.split("/").length > 2 ? "bg-radial-[at_50%_50%] from-green-100 to-[#00f] to-80%" : "bg-radial-[at_50%_50%] from-green-100 to-[#0f0] to-80%"}`}
       >
         X
-      </NavLink>
-    </div>
+      </motion.div>
+    </NavLink>
   );
 }
