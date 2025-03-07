@@ -12,6 +12,7 @@ import Help from "./components/Help";
 import useIsMobile from "./hooks/useIsMobile";
 import Lightbox from "./components/Lightbox";
 import Error from "./components/Error";
+import PixelCursor from "./components/PixelCursor";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -52,6 +53,7 @@ function App() {
       {location.pathname !== "/" && <ActionBar />}
       {location.pathname === "/" && !isMobile && <Help />}
       <Lightbox />
+      {!isMobile && <PixelCursor />}
     </main>
   );
 }
