@@ -68,7 +68,7 @@ export default function SectionContainer() {
   if (error || configError || !currentSection || quienSoyError) return null;
 
   return (
-    <div className="h-full min-h-screen overflow-hidden bg-[#000000aa] backdrop-blur-xl sm:bg-transparent sm:backdrop-blur-none">
+    <div className="h-full min-h-screen overflow-hidden bg-[#000000aa] pb-24 backdrop-blur-xl sm:bg-transparent sm:pb-0 sm:backdrop-blur-none">
       {location.pathname === "/visceral" && (
         <SectionTitle
           title="Visceral"
@@ -97,6 +97,7 @@ export default function SectionContainer() {
             {content}
           </SectionContent>
         )}
+
       {currentSection &&
         currentSection._type === "quienSoy" &&
         quienSoy?.comentarios?.length > 0 && (
@@ -107,8 +108,6 @@ export default function SectionContainer() {
             {content}
           </SectionContent>
         )}
-
-      {currentSection && currentSection._type === "quienSoy" && <WebCredits />}
 
       {currentSection.links && (
         <SectionLinks
@@ -136,6 +135,13 @@ export default function SectionContainer() {
             className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-50 active:z-50"
           />
         ))}
+
+      {currentSection && currentSection._type === "quienSoy" && (
+        <>
+          <div className="pt-4 text-center sm:hidden">❦</div>
+          <WebCredits key={"webCredits"} />
+        </>
+      )}
     </div>
   );
 }

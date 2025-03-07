@@ -3,7 +3,7 @@ import useLanguage from "../hooks/useLanguage";
 export default function WebCredits() {
   const { language } = useLanguage();
   return (
-    <div className="fixed right-8 bottom-8 flex gap-2 text-sm">
+    <div className="right-8 bottom-8 flex w-full justify-center gap-2 py-4 text-sm sm:fixed sm:w-auto">
       <div>
         {language === "es"
           ? "diseño y desarrollo web:"
