@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router";
 
-const GenerativeSharpLines = () => {
+const GenerativeSharpLines = ({ line }) => {
   const canvasRef = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const animationFrameRef = useRef(null);
@@ -33,7 +33,7 @@ const GenerativeSharpLines = () => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [home]);
+  }, [home, line]);
 
   // Draw function
   const drawFrame = (timestamp) => {
@@ -75,7 +75,7 @@ const GenerativeSharpLines = () => {
     const maxDepth = 7;
     const branchingFactor = 0.7;
     const maxAngleDeviation = Math.PI / 6;
-    const lineColor = "#f5f5f5";
+    const lineColor = line;
 
     // Mouse distance for effects
     const dx = mousePosition.x - centerX;
@@ -194,7 +194,7 @@ const GenerativeSharpLines = () => {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [mousePosition, location.pathname]);
+  }, [mousePosition, location.pathname, line]);
 
   return (
     <div className="flex h-full w-full items-center justify-center">

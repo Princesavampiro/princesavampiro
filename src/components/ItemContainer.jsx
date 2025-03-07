@@ -11,6 +11,7 @@ import LoadToPlayerButton from "./LoadToPlayerButton";
 import useLightbox from "../hooks/useLightbox";
 import useIsMobile from "../hooks/useIsMobile";
 import EmbedRenderer from "./EmbedRenderer";
+import { img } from "motion/react-client";
 
 export default function ItemContainer() {
   const location = useLocation();
@@ -60,15 +61,17 @@ export default function ItemContainer() {
           <div className="flex w-full items-center gap-2 overflow-x-auto p-2">
             {data[0].imagenes?.map((imagen) => (
               <div key={imagen._key}>
-                <img
-                  src={imagen.url + size.small}
-                  alt={data[0].titulo}
-                  className="mx-auto w-[170px] cursor-zoom-in rounded-sm"
-                  onClick={() => {
-                    setLightboxImage(imagen);
-                    setLightboxOpen(true);
-                  }}
-                />
+                {imagen.url && (
+                  <img
+                    src={imagen.url + size.small}
+                    alt={data[0].titulo}
+                    className="mx-auto w-[170px] cursor-zoom-in rounded-sm"
+                    onClick={() => {
+                      setLightboxImage(imagen);
+                      setLightboxOpen(true);
+                    }}
+                  />
+                )}
               </div>
             ))}
           </div>
