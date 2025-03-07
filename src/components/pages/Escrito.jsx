@@ -45,12 +45,12 @@ export default function Escrito() {
 
   return (
     <section className="flex w-full flex-col items-center gap-16 p-8">
-      <h3 className="z-10 text-center font-[Nightingale] text-xl">
+      <h3 className="z-10 flex flex-col items-center gap-2 text-center font-[Nightingale] text-xl sm:block">
         <span
-          className={`rounded-full px-2 py-1 drop-shadow-lg ${
+          className={`rounded-full border border-white/20 px-2 py-1 drop-shadow-lg ${
             selectedSection === "investigacion"
               ? "bg-white/30"
-              : "cursor-pointer bg-white/15 hover:bg-white/30"
+              : "cursor-pointer bg-white/10 hover:bg-white/30"
           }`}
           onClick={() => setSelectedSection("investigacion")}
         >
@@ -58,12 +58,12 @@ export default function Escrito() {
             ? investigacion[0].titulo[language] || investigacion[0].titulo.es
             : "Investigación"}
         </span>
-        {" / "}
+        <span className="hidden sm:inline">{" / "}</span>
         <span
-          className={`rounded-full px-2 py-1 drop-shadow-lg ${
+          className={`rounded-full border border-white/20 px-2 py-1 drop-shadow-lg ${
             selectedSection === "blog"
               ? "bg-white/30"
-              : "cursor-pointer bg-white/15 hover:bg-white/30"
+              : "cursor-pointer bg-white/10 hover:bg-white/30"
           }`}
           onClick={() => setSelectedSection("blog")}
         >
