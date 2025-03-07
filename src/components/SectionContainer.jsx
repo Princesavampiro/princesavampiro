@@ -118,7 +118,7 @@ export default function SectionContainer() {
         />
       )}
 
-      <div className="sm:display-none text-center">✴</div>
+      <div className="text-center sm:hidden">✴</div>
 
       {currentSection.imagen && (
         <SectionImage
