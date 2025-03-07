@@ -13,8 +13,11 @@ export default function Lightbox() {
       onClick={() => setLightboxOpen(false)}
     >
       {!isMobile ? (
-        <div className="items-cenetr flex h-full w-full justify-center">
-          <img src={lightboxImage.url + "?h=1080&fm=webp"} />
+        <div className="flex items-center justify-center">
+          <img
+            src={lightboxImage.url + "?h=1080&fm=webp"}
+            className="h-auto max-h-[95vh] w-auto max-w-[95vw] rounded"
+          />
         </div>
       ) : (
         <img
