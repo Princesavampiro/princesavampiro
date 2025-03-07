@@ -68,7 +68,9 @@ export default function SectionContainer() {
   if (error || configError || !currentSection || quienSoyError) return null;
 
   return (
-    <div className="h-full min-h-screen overflow-hidden bg-[#000000aa] pb-24 backdrop-blur-xl sm:bg-transparent sm:pb-0 sm:backdrop-blur-none">
+    <div
+      className={`h-full overflow-hidden bg-[#000000aa] pb-24 backdrop-blur-xl sm:bg-transparent sm:pb-0 sm:backdrop-blur-none ${location.pathname.split("/").length > 2 ? "max-h-screen" : "min-h-screen"}`}
+    >
       {location.pathname === "/visceral" && (
         <SectionTitle
           title="Visceral"

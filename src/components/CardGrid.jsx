@@ -19,7 +19,7 @@ export default function CardGrid({ data, contentType }) {
   };
 
   return (
-    <ul className="mx-auto flex w-full flex-wrap items-end justify-center gap-8 pt-8">
+    <ul className="mx-auto flex w-full flex-wrap items-end justify-center gap-8 sm:pt-8">
       {data.map((item) => (
         <NavLink
           to={currentPath + "/" + item.slug.current}

@@ -8,11 +8,14 @@ export default function SectionLinks({ links, className }) {
   return (
     <DraggableWindow
       title={"Links"}
-      className={`h-min min-w-[250px] sm:max-w-1/4 ${className}`}
+      className={`h-min min-w-[250px] ${className}`}
     >
-      <ul className="p-4">
+      <ul className="flex flex-col items-center gap-2 p-4 sm:gap-0">
         {links.map((link) => (
-          <li key={link._key} className="text-center">
+          <li
+            key={link._key}
+            className="rounded-full border px-2 py-1 text-center sm:border-none sm:p-0"
+          >
             <a
               className="hover:underline"
               href={link.url}
