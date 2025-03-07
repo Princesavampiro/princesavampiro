@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router";
+import { useLocation } from "react-router";
 import { useItem } from "../hooks/useData";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -11,7 +11,6 @@ import LoadToPlayerButton from "./LoadToPlayerButton";
 import useLightbox from "../hooks/useLightbox";
 import useIsMobile from "../hooks/useIsMobile";
 import EmbedRenderer from "./EmbedRenderer";
-import { img } from "motion/react-client";
 
 export default function ItemContainer() {
   const location = useLocation();
@@ -48,7 +47,7 @@ export default function ItemContainer() {
   };
 
   return (
-    <section className="fixed inset-0 z-60 h-screen w-screen overflow-hidden bg-[#00000044] backdrop-blur-xl">
+    <section className="fixed inset-0 z-60 w-full overflow-auto bg-black/30 pb-24 backdrop-blur-xl sm:h-screen sm:overflow-hidden sm:pb-0">
       <SectionInfo
         sectionTitle={data[0].titulo}
         details={details}
@@ -56,35 +55,35 @@ export default function ItemContainer() {
         className={`sm:fixed sm:top-1/8 sm:left-1/8`}
       />
 
-      {data[0].imagenes && (
-        <DraggableWindow className="h-min w-max max-w-1/3 sm:fixed sm:top-1/4 sm:right-1/8">
-          <div className="flex w-full items-center gap-2 overflow-x-auto p-2">
-            {data[0].imagenes?.map((imagen) => (
-              <div key={imagen._key}>
-                {imagen.url && (
-                  <img
-                    src={imagen.url + size.small}
-                    alt={data[0].titulo}
-                    className="mx-auto w-[170px] cursor-zoom-in rounded-sm"
-                    onClick={() => {
-                      setLightboxImage(imagen);
-                      setLightboxOpen(true);
-                    }}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        </DraggableWindow>
+      {data[0].artwork && (
+        <SectionImage
+          image={data[0].artwork}
+          alt={data[0].titulo}
+          className={`sm:fixed sm:bottom-32 sm:left-1/3`}
+        />
       )}
 
+      {data[0].embed &&
+        (isMobile ? (
+          <div className="mx-4 overflow-hidden rounded-md">
+            <EmbedRenderer value={data[0].embed} />
+          </div>
+        ) : (
+          <LoadToPlayerButton
+            data={data[0].embed}
+            className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-70 active:z-70"
+          />
+        ))}
+
+      <div className="py-8 text-center sm:hidden">✴</div>
+
       {data[0].obras && (
-        <DraggableWindow className="max-h-[50vh] w-1/3 sm:fixed sm:bottom-1/8 sm:left-1/4">
-          <div className="columns-3xs gap-8 p-8 pb-0">
+        <DraggableWindow className="sm:fixed sm:bottom-1/8 sm:left-1/4 sm:max-h-[50vh] sm:w-1/3">
+          <div className="flex flex-col gap-8 p-8 pb-0 sm:block sm:columns-3xs">
             {data[0].obras?.map((obra) => (
               <div
                 key={obra.titulo}
-                className="flex break-inside-avoid flex-col gap-2 pb-8"
+                className="flex flex-col gap-2 sm:break-inside-avoid sm:pb-8"
               >
                 {obra.imagen.url ? (
                   <img
@@ -97,7 +96,7 @@ export default function ItemContainer() {
                     }}
                   />
                 ) : (
-                  <div className="h-[100px] w-full rounded-sm border border-white/50 bg-black opacity-30" />
+                  <div className="w-full rounded-sm border border-white/50 bg-black opacity-30 sm:h-[100px]" />
                 )}
                 <div className="text-sm">
                   {obra.titulo && (
@@ -125,23 +124,29 @@ export default function ItemContainer() {
         />
       )}
 
-      {data[0].artwork && (
-        <SectionImage
-          image={data[0].artwork}
-          alt={data[0].titulo}
-          className={`sm:fixed sm:bottom-32 sm:left-1/3`}
-        />
-      )}
+      <div className="py-8 text-center sm:hidden">✴</div>
 
-      {data[0].embed &&
-        (isMobile ? (
-          <EmbedRenderer value={data[0].embed} />
-        ) : (
-          <LoadToPlayerButton
-            data={data[0].embed}
-            className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-70 active:z-70"
-          />
-        ))}
+      {data[0].imagenes && (
+        <DraggableWindow className="sm:fixed sm:top-1/4 sm:right-1/8 sm:h-min sm:w-max sm:max-w-1/3">
+          <div className="flex w-full flex-col items-center gap-4 p-4 sm:flex-row sm:overflow-x-auto">
+            {data[0].imagenes?.map((imagen) => (
+              <div key={imagen._key}>
+                {imagen.url && (
+                  <img
+                    src={imagen.url + size.small}
+                    alt={data[0].titulo}
+                    className="mx-auto w-full cursor-zoom-in rounded-sm sm:w-[170px]"
+                    onClick={() => {
+                      setLightboxImage(imagen);
+                      setLightboxOpen(true);
+                    }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </DraggableWindow>
+      )}
     </section>
   );
 }
