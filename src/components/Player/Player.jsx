@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useConfig } from "../../hooks/useData";
 import EmbedRenderer from "../EmbedRenderer";
 import usePlayer from "../../hooks/usePlayer";
-import { motion, useDragControls } from "motion/react";
+import { motion, useDragControls, AnimatePresence } from "motion/react";
 import useIsMobile from "../../hooks/useIsMobile";
 
 export default function Player() {
@@ -34,12 +34,27 @@ export default function Player() {
             ✴
           </div>
         )}
-        <div className="overflow-y-auto">
-          <div
-            className={`${isExpanded ? "h-max min-w-[400px]" : "h-0 w-20 overflow-hidden"}`}
+        <div className="overflow-hidden">
+          <motion.div
+            layout
+            initial={false}
+            animate={{
+              height: isExpanded ? "auto" : 0,
+              width: isExpanded ? "min-content" : "5rem",
+              opacity: isExpanded ? 1 : 0,
+            }}
+            transition={{
+              stiffness: 300,
+              damping: 30,
+              duration: 0.2,
+            }}
+            className="overflow-hidden"
+            style={{ minWidth: isExpanded ? "400px" : "auto" }}
           >
-            {currentEmbed && <EmbedRenderer value={currentEmbed} />}
-          </div>
+            <AnimatePresence>
+              {currentEmbed && <EmbedRenderer value={currentEmbed} />}
+            </AnimatePresence>
+          </motion.div>
           <div
             className="flex cursor-pointer justify-around gap-2 bg-[#00000022] p-2 backdrop-blur-sm select-none hover:bg-white/30"
             onClick={() =>
