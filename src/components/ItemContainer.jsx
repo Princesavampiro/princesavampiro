@@ -9,12 +9,15 @@ import DraggableWindow from "./DraggableWindow";
 import SectionLinks from "./SectionLinks";
 import LoadToPlayerButton from "./LoadToPlayerButton";
 import useLightbox from "../hooks/useLightbox";
+import useIsMobile from "../hooks/useIsMobile";
+import EmbedRenderer from "./EmbedRenderer";
 
 export default function ItemContainer() {
   const location = useLocation();
   const currentPath = location.pathname.split("/")[2];
   const { data, isLoading, error } = useItem(currentPath);
   const { language } = useLanguage();
+  const isMobile = useIsMobile();
 
   const { setLightboxOpen, setLightboxImage } = useLightbox();
 
@@ -127,12 +130,15 @@ export default function ItemContainer() {
         />
       )}
 
-      {data[0].embed && (
-        <LoadToPlayerButton
-          data={data[0].embed}
-          className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-70 active:z-70"
-        />
-      )}
+      {data[0].embed &&
+        (isMobile ? (
+          <EmbedRenderer value={data[0].embed} />
+        ) : (
+          <LoadToPlayerButton
+            data={data[0].embed}
+            className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-70 active:z-70"
+          />
+        ))}
     </section>
   );
 }

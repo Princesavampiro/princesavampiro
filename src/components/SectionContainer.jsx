@@ -17,6 +17,7 @@ import Escrito from "./pages/Escrito";
 import Sonoro from "./pages/Sonoro";
 import Visual from "./pages/Visual";
 import QuienSoy from "./pages/QuienSoy";
+import EmbedRenderer from "./EmbedRenderer";
 
 export default function SectionContainer() {
   const location = useLocation();
@@ -125,12 +126,16 @@ export default function SectionContainer() {
         />
       )}
 
-      {currentSection && currentSection.embed && !isMobile && (
-        <LoadToPlayerButton
-          data={currentSection.embed}
-          className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-50 active:z-50"
-        />
-      )}
+      {currentSection &&
+        currentSection.embed &&
+        (isMobile ? (
+          <EmbedRenderer value={currentSection.embed} />
+        ) : (
+          <LoadToPlayerButton
+            data={currentSection.embed}
+            className="max-w-content fixed bottom-1/8 left-1/4 h-max hover:z-50 active:z-50"
+          />
+        ))}
     </div>
   );
 }
