@@ -13,6 +13,7 @@ import useIsMobile from "./hooks/useIsMobile";
 import Lightbox from "./components/Lightbox";
 import Error from "./components/Error";
 import PixelCursor from "./components/PixelCursor";
+import { AnimatePresence } from "motion/react";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -45,8 +46,10 @@ function App() {
 
       <Menu sections={data} />
 
-      {location.pathname !== "/" && <SectionContainer />}
-      {location.pathname.split("/").length > 2 && <ItemContainer />}
+      <AnimatePresence propagate>
+        {location.pathname !== "/" && <SectionContainer />}
+        {location.pathname.split("/").length > 2 && <ItemContainer />}
+      </AnimatePresence>
 
       <LanguageButton />
       {!isMobile && <Player />}

@@ -1,9 +1,11 @@
+import useIsMobile from "../hooks/useIsMobile";
 import usePlayer from "../hooks/usePlayer";
 import { motion, useDragControls } from "motion/react";
 
 export default function LoadToPlayerButton({ data, className }) {
   const { currentEmbed, setCurrentEmbed, setIsExpanded } = usePlayer();
   const controls = useDragControls();
+  const isMobile = useIsMobile();
 
   if (currentEmbed === data) return null;
 
@@ -14,6 +16,10 @@ export default function LoadToPlayerButton({ data, className }) {
       dragControls={controls}
       whileDrag={{ scale: 1.05, cursor: "grabbing" }}
       dragMomentum={false}
+      initial={isMobile ? { opacity: 0 } : { opacity: 0, scale: 0 }}
+      animate={isMobile ? { opacity: 1 } : { opacity: 1, scale: 1 }}
+      exit={isMobile ? { opacity: 0 } : { opacity: 0, scale: 0 }}
+      transition={{ duration: 0.2 }}
       className={`flex flex-col items-center justify-center gap-4 ${className} rotate-12`}
     >
       <div

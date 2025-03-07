@@ -12,6 +12,10 @@ export default function DraggableWindow({ title, children, className }) {
       dragControls={controls}
       whileDrag={{ scale: 1.05, cursor: "grabbing" }}
       dragMomentum={false}
+      initial={isMobile ? { opacity: 0 } : { opacity: 0, scale: 0 }}
+      animate={isMobile ? { opacity: 1 } : { opacity: 1, scale: 1 }}
+      exit={isMobile ? { opacity: 0 } : { opacity: 0, scale: 0 }}
+      transition={{ duration: 0.2 }}
       className={`flex flex-col rounded-lg border-white/30 select-none sm:overflow-hidden sm:border sm:bg-[#00000022] sm:shadow-[0_0_12px_#000] sm:backdrop-blur-sm ${className} hover:z-30 active:z-30`}
     >
       {!isMobile && (
