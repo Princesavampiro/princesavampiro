@@ -7,12 +7,12 @@ import ThemeToggle from "./ThemeToggle";
 const STAR_CHARS = ["✧", "⋆", "⭒", "✲", ".̶̧̢̤̣̮̮͍͆̏ͫ", "."];
 const NUM_STARS = 150;
 const THEMES = [
-  "bg-black",
-  "bg-[#faa]/70",
-  "bg-violet-500/70",
-  "bg-lime-300/70",
-  "bg-[#aaf]/70",
-  "bg-red-500/70",
+  { bg: "bg-black", line: "#f5f5f5" },
+  { bg: "bg-[#faa]/70", line: "#000" },
+  { bg: "bg-violet-500/70", line: "#f5f5f5" },
+  { bg: "bg-lime-300/70", line: "#f5f5f5" },
+  { bg: "bg-[#aaf]/70", line: "#000" },
+  { bg: "bg-red-500/70", line: "#f5f5f5" },
 ];
 
 function generateStar() {
@@ -73,9 +73,11 @@ export default function StarBackground() {
               "radial-gradient(ellipse, black 20%, transparent 100%)",
             maskImage: "radial-gradient(ellipse, black 20%, transparent 100%)",
           }}
-          className={`h-full w-full ${currentTheme}`}
+          className={`h-full w-full ${currentTheme.bg}`}
         >
-          {isMobile && !home ? null : <GenerativeSharpLines />}
+          {isMobile && !home ? null : (
+            <GenerativeSharpLines line={currentTheme.line} />
+          )}
         </div>
       </div>
       <ThemeToggle
