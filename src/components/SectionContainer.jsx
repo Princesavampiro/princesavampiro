@@ -130,7 +130,9 @@ export default function SectionContainer() {
       {currentSection &&
         currentSection.embed &&
         (isMobile ? (
-          <EmbedRenderer value={currentSection.embed} />
+          <div className="mx-4 overflow-hidden rounded-md">
+            <EmbedRenderer value={currentSection.embed} />
+          </div>
         ) : (
           <LoadToPlayerButton
             data={currentSection.embed}
