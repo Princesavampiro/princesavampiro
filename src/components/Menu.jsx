@@ -67,7 +67,7 @@ export default function Menu({ sections }) {
             x: initialPositions[index]?.x,
             y: initialPositions[index]?.y,
           }}
-          className="pointer-events-auto absolute flex max-w-[120px] animate-pulse flex-col items-center hover:z-30 active:z-30"
+          className="pointer-events-auto absolute flex max-w-[120px] animate-pulse flex-col items-center hover:z-30 hover:animate-none active:z-30"
           style={{
             left: "50%",
             top: "50%",
