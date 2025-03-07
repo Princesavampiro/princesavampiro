@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useConfig } from "../../hooks/useData";
 import EmbedRenderer from "../EmbedRenderer";
 import usePlayer from "../../hooks/usePlayer";
-import useLanguage from "../../hooks/useLanguage";
 import { motion, useDragControls } from "motion/react";
 import useIsMobile from "../../hooks/useIsMobile";
 
@@ -10,20 +9,8 @@ export default function Player() {
   const { data } = useConfig();
   const { currentEmbed, setCurrentEmbed, isExpanded, setIsExpanded } =
     usePlayer();
-  const { language } = useLanguage();
   const controls = useDragControls();
   const isMobile = useIsMobile();
-
-  const fields = {
-    show: {
-      es: "mostrar",
-      en: "show",
-    },
-    hide: {
-      es: "esconder",
-      en: "hide",
-    },
-  };
 
   useEffect(() => {
     setCurrentEmbed(data[0].releaseDestacado?.embed || null);
@@ -54,15 +41,15 @@ export default function Player() {
             {currentEmbed && <EmbedRenderer value={currentEmbed} />}
           </div>
           <div
-            className="flex cursor-pointer justify-around gap-2 bg-[#00000022] p-2 backdrop-blur-sm select-none"
+            className="flex cursor-pointer justify-around gap-2 bg-[#00000022] p-2 backdrop-blur-sm select-none hover:bg-white/30"
             onClick={() =>
               setIsExpanded((prev) => {
                 return !prev;
               })
             }
           >
-            <div className="text-center">
-              {isExpanded ? fields.hide[language] : fields.show[language]}
+            <div className="text-center font-[Nightingale] uppercase">
+              {isExpanded ? "↓" : "player"}
             </div>
           </div>
         </div>
