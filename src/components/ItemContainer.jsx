@@ -47,7 +47,7 @@ export default function ItemContainer() {
   };
 
   return (
-    <section className="fixed inset-0 z-60 h-screen w-screen overflow-hidden bg-[#00000044] backdrop-blur-xl">
+    <section className="fixed inset-0 z-60 h-screen w-screen overflow-auto bg-[#00000044] backdrop-blur-xl sm:overflow-hidden">
       <SectionInfo
         sectionTitle={data[0].titulo}
         details={details}
