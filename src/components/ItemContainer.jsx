@@ -85,7 +85,7 @@ export default function ItemContainer() {
                 key={obra.titulo}
                 className="flex flex-col gap-2 sm:break-inside-avoid sm:pb-8"
               >
-                {obra.imagen.url ? (
+                {obra.imagen?.url ? (
                   <img
                     src={obra.imagen?.url + size.small}
                     alt={obra.titulo}
