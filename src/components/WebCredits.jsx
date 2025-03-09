@@ -19,7 +19,7 @@ export default function WebCredits() {
         </a>{" "}
         +{" "}
         <a
-          href="https://sofja.dev"
+          href="https://sofja.uno"
           target="_blank"
           className="animate-pulse hover:animate-none hover:underline"
         >
