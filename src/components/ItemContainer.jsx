@@ -78,7 +78,9 @@ export default function ItemContainer() {
       <div className="py-8 text-center sm:hidden">✴</div>
 
       {data[0].obras && (
-        <DraggableWindow className="sm:fixed sm:bottom-1/8 sm:left-1/4 sm:max-h-[50vh] sm:w-1/3">
+        <DraggableWindow
+          className={`sm:fixed sm:bottom-1/8 sm:left-1/4 sm:max-h-[50vh] ${data[0].obras?.length > 1 ? "sm:w-1/3" : "sm:max-w-[300px]"}`}
+        >
           <div className="flex flex-col gap-8 p-8 pb-0 sm:block sm:columns-3xs">
             {data[0].obras?.map((obra) => (
               <div
