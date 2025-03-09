@@ -10,7 +10,7 @@ const THEMES = [
   { bg: "bg-black", line: "#f5f5f5" },
   { bg: "bg-[#faa]/70", line: "#000" },
   { bg: "bg-violet-500/70", line: "#f5f5f5" },
-  { bg: "bg-lime-300/70", line: "#f5f5f5" },
+  { bg: "bg-lime-300/70", line: "#6341bf" },
   { bg: "bg-[#aaf]/70", line: "#000" },
   { bg: "bg-red-500/70", line: "#f5f5f5" },
 ];
