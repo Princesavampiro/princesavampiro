@@ -13,7 +13,7 @@ import useIsMobile from "./hooks/useIsMobile";
 import Lightbox from "./components/Lightbox";
 import Error from "./components/Error";
 import PixelCursor from "./components/PixelCursor";
-import { AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 function App() {
   const { data, isLoading, error } = useSections();
@@ -22,11 +22,9 @@ function App() {
     isLoading: isConfigLoading,
     error: configError,
   } = useConfig();
-
   const location = useLocation();
   const isMobile = useIsMobile();
 
-  if (isLoading || isConfigLoading) return <LoadingScreen />;
   if (error || configError)
     return (
       <div className="fixed inset-0 z-100 flex h-screen w-full items-center justify-center rounded-lg bg-[#000000aa] backdrop-blur-lg">
@@ -35,29 +33,39 @@ function App() {
     );
 
   return (
-    <main className="relative flex min-h-screen flex-col">
-      <StarBackground />
-
-      <div className="fixed inset-0 animate-pulse">
-        <h1 className="-rotate-1 py-6 pl-4 font-[Crozette] text-3xl sm:py-4 sm:pl-8 sm:text-4xl">
-          <NavLink to="/">{configData[0]?.tituloDelSitio}</NavLink>
-        </h1>
-      </div>
-
-      <Menu sections={data} />
-
-      <AnimatePresence propagate>
-        {location.pathname !== "/" && <SectionContainer />}
-        {location.pathname.split("/").length > 2 && <ItemContainer />}
+    <>
+      <AnimatePresence mode="wait">
+        {isLoading || isConfigLoading ? (
+          <LoadingScreen key="loading-screen" />
+        ) : (
+          <motion.main
+            key="main-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="relative flex min-h-screen flex-col"
+          >
+            <StarBackground />
+            <div className="fixed inset-0 animate-pulse">
+              <h1 className="-rotate-1 py-6 pl-4 font-[Crozette] text-3xl sm:py-4 sm:pl-8 sm:text-4xl">
+                <NavLink to="/">{configData[0]?.tituloDelSitio}</NavLink>
+              </h1>
+            </div>
+            <Menu sections={data} />
+            <AnimatePresence mode="wait">
+              {location.pathname !== "/" && <SectionContainer />}
+              {location.pathname.split("/").length > 2 && <ItemContainer />}
+            </AnimatePresence>
+            <LanguageButton />
+            {!isMobile && <Player />}
+            {location.pathname !== "/" && <ActionBar />}
+            {location.pathname === "/" && !isMobile && <Help />}
+            <Lightbox />
+            {!isMobile && <PixelCursor />}
+          </motion.main>
+        )}
       </AnimatePresence>
-
-      <LanguageButton />
-      {!isMobile && <Player />}
-      {location.pathname !== "/" && <ActionBar />}
-      {location.pathname === "/" && !isMobile && <Help />}
-      <Lightbox />
-      {!isMobile && <PixelCursor />}
-    </main>
+    </>
   );
 }
 
