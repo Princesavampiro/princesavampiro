@@ -131,21 +131,22 @@ export default function ItemContainer() {
       {data[0].imagenes && (
         <DraggableWindow className="sm:fixed sm:top-1/4 sm:right-1/8 sm:h-min sm:w-max sm:max-w-1/2 lg:max-w-1/3">
           <div className="flex w-full flex-col items-center gap-4 p-4 sm:flex-row sm:overflow-x-auto">
-            {data[0].imagenes?.map((imagen) => (
-              <div key={imagen._key} className="shrink-0">
-                {imagen.url && (
-                  <img
-                    src={imagen.url + size.small}
-                    alt={data[0].titulo}
-                    className={`mx-auto w-full cursor-zoom-in rounded-sm ${data[0].imagenes.length === 1 ? "sm:w-[300px]" : "sm:w-[170px]"}`}
-                    onClick={() => {
-                      setLightboxImage(imagen);
-                      setLightboxOpen(true);
-                    }}
-                  />
-                )}
-              </div>
-            ))}
+            {data[0].imagenes?.map(
+              (imagen) =>
+                imagen.url && (
+                  <div key={imagen._key} className="shrink-0">
+                    <img
+                      src={imagen.url + size.small}
+                      alt={data[0].titulo}
+                      className={`mx-auto w-full cursor-zoom-in rounded-sm ${data[0].imagenes.length === 1 ? "sm:w-[300px]" : "sm:w-[170px]"}`}
+                      onClick={() => {
+                        setLightboxImage(imagen);
+                        setLightboxOpen(true);
+                      }}
+                    />
+                  </div>
+                ),
+            )}
           </div>
         </DraggableWindow>
       )}
