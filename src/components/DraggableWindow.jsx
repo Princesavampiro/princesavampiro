@@ -24,7 +24,11 @@ export default function DraggableWindow({ title, children, className }) {
           className="flex min-h-8 cursor-grab items-center justify-center border-b border-white/30 active:cursor-grabbing"
         >
           {title ?? (
-            <img src="/img/star.svg" alt="star" className="w-4 invert" />
+            <img
+              src="/img/star.svg"
+              alt="star"
+              className="pointer-events-none w-4 invert"
+            />
           )}
         </div>
       )}

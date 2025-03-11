@@ -26,7 +26,11 @@ export default function LoadToPlayerButton({ data, className }) {
         className="mx-auto animate-spin cursor-grab rounded-full border border-white/30 p-1 select-none hover:animate-none active:cursor-grabbing"
         onPointerDown={(event) => controls.start(event)}
       >
-        <img src="/img/star.svg" alt="star" className="w-4 invert" />
+        <img
+          src="/img/star.svg"
+          alt="star"
+          className="pointer-events-none w-4 invert"
+        />
       </div>
       <motion.button
         whileHover={{ scale: 1.1 }}

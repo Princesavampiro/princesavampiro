@@ -13,7 +13,13 @@ export default function SectionImage({ image, alt, className }) {
 
   return (
     <DraggableWindow
-      title={<img src="/img/star.svg" alt="star" className="w-4 invert" />}
+      title={
+        <img
+          src="/img/star.svg"
+          alt="star"
+          className="pointer-events-none w-4 invert"
+        />
+      }
       className={`h-min sm:w-[350px] ${className}`}
     >
       <div className="p-4">

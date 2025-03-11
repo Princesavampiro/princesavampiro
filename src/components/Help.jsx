@@ -12,13 +12,21 @@ export default function Help() {
       {language === "es" ? (
         <span className="flex items-center gap-1">
           arrastra estrellas
-          <img src="/img/star.svg" alt="star" className="w-4 invert" />
+          <img
+            src="/img/star.svg"
+            alt="star"
+            className="pointer-events-none w-4 invert"
+          />
           para mover cosas
         </span>
       ) : (
         <span className="flex items-center gap-1">
           drag stars
-          <img src="/img/star.svg" alt="star" className="w-4 invert" />
+          <img
+            src="/img/star.svg"
+            alt="star"
+            className="pointer-events-none w-4 invert"
+          />
           to move things
         </span>
       )}

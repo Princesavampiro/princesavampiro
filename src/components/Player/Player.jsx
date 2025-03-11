@@ -34,7 +34,7 @@ export default function Player() {
             <img
               src="/img/star.svg"
               alt="star"
-              className="mx-auto w-4 invert"
+              className="pointer-events-none mx-auto w-4 invert"
             />
           </div>
         )}
