@@ -118,8 +118,8 @@ export default function SectionContainer() {
         />
       )}
 
-      <div className="text-center sm:hidden">
-        <img src="/img/star.svg" alt="star" className="w-4 invert" />
+      <div className="py-4 text-center sm:hidden">
+        <img src="/img/star.svg" alt="star" className="mx-auto w-4 invert" />
       </div>
 
       {currentSection.imagen && (

@@ -87,7 +87,7 @@ export default function Menu({ sections }) {
               />
             </div>
           ) : (
-            <div className="mx-auto size-6 animate-spin rounded-full border border-white/30">
+            <div className="mx-auto animate-spin rounded-full border border-white/30 p-1">
               <img
                 src="/img/star.svg"
                 alt="star"

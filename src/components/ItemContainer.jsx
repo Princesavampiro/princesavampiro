@@ -76,7 +76,7 @@ export default function ItemContainer() {
         ))}
 
       <div className="py-8 text-center sm:hidden">
-        <img src="/img/star.svg" alt="star" className="w-4 invert" />
+        <img src="/img/star.svg" alt="star" className="mx-auto w-4 invert" />
       </div>
 
       {data[0].obras && (
@@ -129,7 +129,7 @@ export default function ItemContainer() {
       )}
 
       <div className="py-8 text-center sm:hidden">
-        <img src="/img/star.svg" alt="star" className="w-4 invert" />
+        <img src="/img/star.svg" alt="star" className="mx-auto w-4 invert" />
       </div>
 
       {data[0].imagenes && (
