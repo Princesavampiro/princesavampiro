@@ -133,10 +133,12 @@ export function Entry({ arr, entry, index }) {
       </div>
       <h4 className="mb-6 text-xl underline">{entry.titulo.es}</h4>
       <div className="flex flex-col items-center gap-4">
-        <PortableText
-          components={components}
-          value={entry.texto[language] || entry.texto.es}
-        />
+        {entry.texto && (
+          <PortableText
+            components={components}
+            value={entry.texto[language] || entry.texto.es}
+          />
+        )}
       </div>
       {index !== arr.length - 1 && (
         <div className="mx-auto mt-16">
