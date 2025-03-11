@@ -118,7 +118,9 @@ export default function SectionContainer() {
         />
       )}
 
-      <div className="text-center sm:hidden">✴</div>
+      <div className="text-center sm:hidden">
+        <img src="/img/star.svg" alt="star" className="w-4 invert" />
+      </div>
 
       {currentSection.imagen && (
         <SectionImage

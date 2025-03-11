@@ -9,9 +9,19 @@ export default function Help() {
       drag
       className="fixed top-8 right-24 animate-pulse cursor-grab text-sm select-none hover:animate-none active:cursor-grabbing"
     >
-      {language === "es"
-        ? "arrastra estrellas ✴ para mover cosas"
-        : "drag stars ✴ to move things"}
+      {language === "es" ? (
+        <span className="flex items-center gap-1">
+          arrastra estrellas
+          <img src="/img/star.svg" alt="star" className="w-4 invert" />
+          para mover cosas
+        </span>
+      ) : (
+        <span className="flex items-center gap-1">
+          drag stars
+          <img src="/img/star.svg" alt="star" className="w-4 invert" />
+          to move things
+        </span>
+      )}
     </motion.div>
   );
 }

@@ -23,10 +23,10 @@ export default function LoadToPlayerButton({ data, className }) {
       className={`flex flex-col items-center justify-center gap-4 ${className} rotate-12`}
     >
       <div
-        className="mx-auto size-6 animate-spin cursor-grab rounded-full border border-white/30 select-none hover:animate-none active:cursor-grabbing"
+        className="mx-auto animate-spin cursor-grab rounded-full border border-white/30 p-1 select-none hover:animate-none active:cursor-grabbing"
         onPointerDown={(event) => controls.start(event)}
       >
-        ✴
+        <img src="/img/star.svg" alt="star" className="w-4 invert" />
       </div>
       <motion.button
         whileHover={{ scale: 1.1 }}

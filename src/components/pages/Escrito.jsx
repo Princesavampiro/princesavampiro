@@ -86,7 +86,9 @@ export default function Escrito() {
             </div>
           )}
 
-          <div className="mx-auto">✴</div>
+          <div className="mx-auto">
+            <img src="/img/star.svg" alt="star" className="w-4 invert" />
+          </div>
 
           {articulos &&
             articulos.map((articulo, index) => (
@@ -136,7 +138,11 @@ export function Entry({ arr, entry, index }) {
           value={entry.texto[language] || entry.texto.es}
         />
       </div>
-      {index !== arr.length - 1 && <div className="mx-auto mt-16">✴</div>}
+      {index !== arr.length - 1 && (
+        <div className="mx-auto mt-16">
+          <img src="/img/star.svg" alt="star" className="w-4 invert" />
+        </div>
+      )}
     </div>
   );
 }

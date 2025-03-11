@@ -25,7 +25,9 @@ export default function QuienSoy() {
             <div className="text-start">⋰ {comentario.autor}</div>
           )}
           {index !== data.comentarios.length - 1 && (
-            <div className="mx-auto my-4">✴</div>
+            <div className="mx-auto my-4">
+              <img src="/img/star.svg" alt="star" className="w-4 invert" />
+            </div>
           )}
         </div>
       ))}

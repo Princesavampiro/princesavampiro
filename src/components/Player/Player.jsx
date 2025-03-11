@@ -29,9 +29,13 @@ export default function Player() {
         {!isMobile && (
           <div
             onPointerDown={(event) => controls.start(event)}
-            className="flex min-h-8 cursor-grab items-center justify-center border-b border-white/30 active:cursor-grabbing"
+            className="cursor-grab border-b border-white/30 p-1 active:cursor-grabbing"
           >
-            ✴
+            <img
+              src="/img/star.svg"
+              alt="star"
+              className="mx-auto w-4 invert"
+            />
           </div>
         )}
         <div className="overflow-hidden">

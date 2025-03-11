@@ -23,7 +23,9 @@ export default function DraggableWindow({ title, children, className }) {
           onPointerDown={(event) => controls.start(event)}
           className="flex min-h-8 cursor-grab items-center justify-center border-b border-white/30 active:cursor-grabbing"
         >
-          {title ?? "✴"}
+          {title ?? (
+            <img src="/img/star.svg" alt="star" className="w-4 invert" />
+          )}
         </div>
       )}
       <div className="sm:overflow-y-auto">{children}</div>

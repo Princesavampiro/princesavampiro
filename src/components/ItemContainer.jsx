@@ -75,7 +75,9 @@ export default function ItemContainer() {
           />
         ))}
 
-      <div className="py-8 text-center sm:hidden">✴</div>
+      <div className="py-8 text-center sm:hidden">
+        <img src="/img/star.svg" alt="star" className="w-4 invert" />
+      </div>
 
       {data[0].obras && (
         <DraggableWindow
@@ -126,7 +128,9 @@ export default function ItemContainer() {
         />
       )}
 
-      <div className="py-8 text-center sm:hidden">✴</div>
+      <div className="py-8 text-center sm:hidden">
+        <img src="/img/star.svg" alt="star" className="w-4 invert" />
+      </div>
 
       {data[0].imagenes && (
         <DraggableWindow className="sm:fixed sm:top-1/4 sm:right-1/8 sm:h-min sm:w-max sm:max-w-1/2 lg:max-w-1/3">

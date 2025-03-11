@@ -77,14 +77,14 @@ export default function Menu({ sections }) {
         >
           {!isMobile ? (
             <div
-              className="mx-auto size-6 animate-spin cursor-grab rounded-full border border-white/30 hover:animate-none"
+              className="mx-auto animate-spin cursor-grab rounded-full border border-white/30 p-1 hover:animate-none"
               onPointerDown={(event) => controlsArray[index].start(event)}
             >
-              ✴
+              <img src="/img/star.svg" alt="star" className="w-4 invert" />
             </div>
           ) : (
             <div className="mx-auto size-6 animate-spin rounded-full border border-white/30">
-              ✴
+              <img src="/img/star.svg" alt="star" className="w-4 invert" />
             </div>
           )}
           <NavLink

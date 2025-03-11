@@ -12,7 +12,10 @@ export default function SectionImage({ image, alt, className }) {
   if (!image) return null;
 
   return (
-    <DraggableWindow title="✴" className={`h-min sm:w-[350px] ${className}`}>
+    <DraggableWindow
+      title={<img src="/img/star.svg" alt="star" className="w-4 invert" />}
+      className={`h-min sm:w-[350px] ${className}`}
+    >
       <div className="p-4">
         <img
           src={image?.url + size.small}
