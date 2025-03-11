@@ -45,7 +45,7 @@ function App() {
             transition={{ duration: 1 }}
             className="relative flex min-h-screen flex-col"
           >
-            <StarBackground />
+            {location.pathname !== "/" && isMobile ? null : <StarBackground />}
             <div className="fixed inset-0 animate-pulse">
               <h1 className="-rotate-1 py-6 pl-4 font-[Crozette] text-3xl sm:py-4 sm:pl-8 sm:text-4xl">
                 <NavLink to="/">{configData[0]?.tituloDelSitio}</NavLink>
