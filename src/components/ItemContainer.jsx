@@ -51,7 +51,7 @@ export default function ItemContainer() {
       <SectionInfo
         sectionTitle={data[0].titulo}
         details={details}
-        text={data[0].texto[language]}
+        text={data[0].texto?.[language] || data[0].texto?.es}
         className={`sm:fixed sm:top-1/8 sm:left-1/8`}
       />
 
