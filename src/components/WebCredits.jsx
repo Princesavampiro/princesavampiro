@@ -11,19 +11,11 @@ export default function WebCredits() {
       </div>
       <div>
         <a
-          href="https://astrosuka.xyz"
+          href="https://i10-studio.github.io"
           target="_blank"
           className="animate-pulse hover:animate-none hover:underline"
         >
-          Astrosuka
-        </a>{" "}
-        +{" "}
-        <a
-          href="https://sofja.uno"
-          target="_blank"
-          className="animate-pulse hover:animate-none hover:underline"
-        >
-          Sofja
+          instrumento
         </a>
       </div>
     </div>
