@@ -86,10 +86,13 @@ export default function Escrito() {
             </div>
           )}
 
-          <div className="mx-auto">
-            <img src="/img/star.svg" alt="star" className="w-4 invert" />
-          </div>
-
+          {articulos && articulos.length === 0 ? (
+            <h4>(～﹃～)~zZ</h4>
+          ) : (
+            <div className="mx-auto">
+              <img src="/img/star.svg" alt="star" className="w-4 invert" />
+            </div>
+          )}
           {articulos &&
             articulos.map((articulo, index) => (
               <Entry
@@ -104,6 +107,7 @@ export default function Escrito() {
 
       {selectedSection === "blog" && (
         <div className="flex w-full flex-col items-center gap-16">
+          {blogPosts && blogPosts.length === 0 && <h4>(～﹃～)~zZ</h4>}
           {blogPosts &&
             blogPosts.map((post, index) => (
               <Entry
